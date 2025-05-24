@@ -185,10 +185,18 @@
       </button>
     </div>
     <div class="social-icons">
-      <a href="https://t.me/Unique_IND_coin_bot" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram" /></a>
-      <a href="https://www.facebook.com/share/1Frxw91MUM/" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" /></a>
-      <a href="https://www.instagram.com/ind.coin.in" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" /></a>
-      <a href="https://www.threads.net/@ind.coin.in" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968885.png" alt="Threads" /></a>
+      <a href="https://t.me/Unique_IND_coin_bot" target="_blank" onclick="giveSocialBonus('telegram', event)">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram" />
+      </a>
+      <a href="https://www.facebook.com/share/1Frxw91MUM/" target="_blank" onclick="giveSocialBonus('facebook', event)">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" />
+      </a>
+      <a href="https://www.instagram.com/ind.coin.in" target="_blank" onclick="giveSocialBonus('instagram', event)">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" />
+      </a>
+      <a href="https://www.threads.net/@ind.coin.in" target="_blank" onclick="giveSocialBonus('threads', event)">
+        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968885.png" alt="Threads" />
+      </a>
     </div>
     <div style="margin-top:30px; color:#44f3ef; font-size:13px;">
       Your user ID: <span id="userId"></span>
@@ -225,7 +233,7 @@
   </div>
 </div>
 
-<!-- Wallet Tab Content (Balance Card IS BACK!) -->
+<!-- Wallet Tab Content -->
 <div id="wallet" class="tab-content" style="display:none;">
   <div class="centered">
     <h2>
@@ -303,79 +311,158 @@
 </div>
 
 <script>
-  let walletBalance = parseFloat(localStorage.getItem("walletBalance")) || 0;
-  let miningBalance = parseFloat(localStorage.getItem("miningBalance")) || 0;
-  let hashrate = 2;
-  const miningRate = 0.00000009110;
+// --- Bonus Amounts ---
+const LEVEL_BONUS = [5000, 2000, 1000]; // [Level 1, Level 2, Level 3]
 
-  function updateMiningDisplay() {
-    if(document.getElementById('balance-card')) document.getElementById('balance-card').innerHTML = `Balance: <strong>${walletBalance.toFixed(6)} IND.COIN</strong>`;
-    if(document.getElementById('live-balance')) document.getElementById('live-balance').innerText = `${miningBalance.toFixed(9)} IND.coin`;
-    if(document.getElementById('hashrate-display')) document.getElementById('hashrate-display').innerText = hashrate;
-    if(document.getElementById('wallet-balance-card')) document.getElementById('wallet-balance-card').innerHTML = `Wallet Balance: <strong>${walletBalance.toFixed(6)} IND.COIN</strong>`;
-  }
-  function mineCoins(elapsedSeconds) {
-    miningBalance += elapsedSeconds * hashrate * miningRate;
-    localStorage.setItem("miningBalance", miningBalance.toString());
-    updateMiningDisplay();
-  }
-  function startAutoMining() {
-    const lastTime = parseFloat(localStorage.getItem("lastMiningTime")) || Date.now();
-    const now = Date.now();
-    const elapsed = Math.floor((now - lastTime) / 1000);
-    if (elapsed > 0) mineCoins(elapsed);
-    setInterval(() => {
-      mineCoins(1);
-      localStorage.setItem("lastMiningTime", Date.now().toString());
-    }, 1000);
-  }
-  function startApp() {
-    document.getElementById("splash-screen").style.display = "none";
-    document.querySelectorAll(".tab-content").forEach(tab => tab.style.display = "none");
-    document.getElementById("home").style.display = "block";
-    document.querySelector(".tab-bar").style.display = "flex";
-    updateMiningDisplay();
-    startAutoMining();
-  }
-  document.getElementById("startGameBtn").onclick = startApp;
-  function showTab(tabId) {
-    document.querySelectorAll(".tab-content").forEach(tab => tab.style.display = "none");
-    document.getElementById(tabId).style.display = "block";
-    document.querySelectorAll(".tab-button").forEach(btn => btn.classList.remove("active"));
-    const clickedButton = document.getElementById('btn-' + tabId);
-    if (clickedButton) clickedButton.classList.add("active");
-    updateMiningDisplay(); // Update display on tab switch
-  }
-  function claimCoins() {
-    if (miningBalance > 0) {
-      walletBalance += miningBalance;
-      miningBalance = 0;
-      localStorage.setItem("walletBalance", walletBalance.toString());
-      localStorage.setItem("miningBalance", miningBalance.toString());
-      updateMiningDisplay();
-      alert("Successfully Claimed!");
-    } else {
-      alert("No IND.COIN available to claim.");
+// Helper: Get Query Param by Name
+function getQueryParam(name) {
+  const url = new URL(window.location.href);
+  return url.searchParams.get(name);
+}
+
+// Helper: Get/Set Other User's Wallet from localStorage
+function getOtherWallet(userId) {
+  return parseFloat(localStorage.getItem("walletBalance_" + userId)) || 0;
+}
+function setOtherWallet(userId, balance) {
+  localStorage.setItem("walletBalance_" + userId, balance.toString());
+}
+
+// Helper: Get/Set User's Referrer
+function getUserReferrer(userId) {
+  return localStorage.getItem("referrer_" + userId);
+}
+function setUserReferrer(userId, ref) {
+  localStorage.setItem("referrer_" + userId, ref);
+}
+
+// --- USER ID GENERATION (must before referral logic) ---
+let userId = localStorage.getItem("userId");
+let isNewUser = false;
+if (!userId) {
+  userId = Math.floor(Math.random() * 1e10).toString();
+  localStorage.setItem("userId", userId);
+  isNewUser = true;
+}
+
+// --- REFERRAL BONUS ON FIRST JOIN (MULTI LEVEL) ---
+if (isNewUser) {
+  const ref = getQueryParam("ref");
+  if (ref && ref !== userId) {
+    // Set this user's referrer for future level calculation
+    setUserReferrer(userId, ref);
+
+    let currRef = ref;
+    for (let level = 0; level < LEVEL_BONUS.length; level++) {
+      if (!currRef) break;
+      let refBalance = getOtherWallet(currRef);
+      refBalance += LEVEL_BONUS[level];
+      setOtherWallet(currRef, refBalance);
+
+      // Move to next upline
+      currRef = getUserReferrer(currRef);
     }
   }
-  function boostHashrate() {
-    alert("Boost feature coming soon!");
+}
+
+// --- NORMAL BALANCE INIT ---
+let walletBalance = parseFloat(localStorage.getItem("walletBalance")) || 0;
+let miningBalance = parseFloat(localStorage.getItem("miningBalance")) || 0;
+let hashrate = 2;
+const miningRate = 0.00000009110;
+
+// --- SOCIAL BONUS FUNCTION ---
+function giveSocialBonus(platform, e) {
+  const bonusKey = `socialBonus_${platform}_${userId}`;
+  if (!localStorage.getItem(bonusKey)) {
+    walletBalance += 1000;
+    localStorage.setItem("walletBalance", walletBalance.toString());
+    localStorage.setItem(bonusKey, "1");
+    updateMiningDisplay();
+    alert(`.100 IND.COIN bonus for following on ${platform.charAt(0).toUpperCase() + platform.slice(1)}!`);
   }
-  function inviteFriend() {
-    const userId = localStorage.getItem("userId");
-    const inviteLink = `${window.location.origin}?ref=${userId}`;
+  // Link will open as normal
+}
+
+// --- UPDATE DISPLAY FUNCTION (include referral wallet) ---
+function updateMiningDisplay() {
+  // Merge referrer wallet balance if login user is a referrer
+  const walletKey = "walletBalance_" + userId;
+  let referralWallet = parseFloat(localStorage.getItem(walletKey)) || 0;
+  if (referralWallet > 0) {
+    walletBalance += referralWallet;
+    localStorage.setItem("walletBalance", walletBalance.toString());
+    localStorage.removeItem(walletKey); // So double add na ho
+  }
+  if(document.getElementById('balance-card')) document.getElementById('balance-card').innerHTML = `Balance: <strong>${walletBalance.toFixed(6)} IND.COIN</strong>`;
+  if(document.getElementById('live-balance')) document.getElementById('live-balance').innerText = `${miningBalance.toFixed(9)} IND.coin`;
+  if(document.getElementById('hashrate-display')) document.getElementById('hashrate-display').innerText = hashrate;
+  if(document.getElementById('wallet-balance-card')) document.getElementById('wallet-balance-card').innerHTML = `Wallet Balance: <strong>${walletBalance.toFixed(6)} IND.COIN</strong>`;
+}
+
+function mineCoins(elapsedSeconds) {
+  miningBalance += elapsedSeconds * hashrate * miningRate;
+  localStorage.setItem("miningBalance", miningBalance.toString());
+  updateMiningDisplay();
+}
+function startAutoMining() {
+  const lastTime = parseFloat(localStorage.getItem("lastMiningTime")) || Date.now();
+  const now = Date.now();
+  const elapsed = Math.floor((now - lastTime) / 1000);
+  if (elapsed > 0) mineCoins(elapsed);
+  setInterval(() => {
+    mineCoins(1);
+    localStorage.setItem("lastMiningTime", Date.now().toString());
+  }, 1000);
+}
+function startApp() {
+  document.getElementById("splash-screen").style.display = "none";
+  document.querySelectorAll(".tab-content").forEach(tab => tab.style.display = "none");
+  document.getElementById("home").style.display = "block";
+  document.querySelector(".tab-bar").style.display = "flex";
+  updateMiningDisplay();
+  startAutoMining();
+}
+document.getElementById("startGameBtn").onclick = startApp;
+function showTab(tabId) {
+  document.querySelectorAll(".tab-content").forEach(tab => tab.style.display = "none");
+  document.getElementById(tabId).style.display = "block";
+  document.querySelectorAll(".tab-button").forEach(btn => btn.classList.remove("active"));
+  const clickedButton = document.getElementById('btn-' + tabId);
+  if (clickedButton) clickedButton.classList.add("active");
+  updateMiningDisplay();
+}
+function claimCoins() {
+  if (miningBalance > 0) {
+    walletBalance += miningBalance;
+    miningBalance = 0;
+    localStorage.setItem("walletBalance", walletBalance.toString());
+    localStorage.setItem("miningBalance", miningBalance.toString());
+    updateMiningDisplay();
+    alert("Successfully Claimed!");
+  } else {
+    alert("No IND.COIN available to claim.");
+  }
+}
+function boostHashrate() {
+  alert("Boost feature coming soon!");
+}
+function inviteFriend() {
+  const inviteLink = `${window.location.origin}?ref=${userId}`;
+  if (navigator.share) {
+    navigator.share({
+      title: "Join IND.COIN!",
+      text: "Mere invite link se join karo aur rewards pao:",
+      url: inviteLink
+    }).catch(() => {});
+  } else {
     navigator.clipboard.writeText(inviteLink)
-      .then(() => alert("Invite link copied!\n" + inviteLink))
+      .then(() => alert("Invite link copied!\n" + inviteLink + "\n\nKisi bhi app mein paste kar ke bhej sakte ho."))
       .catch(() => alert("Failed to copy invite link."));
   }
-  // Set User ID on both places
-  const userId = localStorage.getItem("userId") || (() => {
-    const uid = Math.floor(Math.random() * 1e10).toString();
-    localStorage.setItem("userId", uid);
-    return uid;
-  })();
-  if(document.getElementById("userId")) document.getElementById("userId").innerText = userId;
-  if(document.getElementById("userId2")) document.getElementById("userId2").innerText = userId;
+}
+if(document.getElementById("userId")) document.getElementById("userId").innerText = userId;
+if(document.getElementById("userId2")) document.getElementById("userId2").innerText = userId;
 </script>
 </body>
-</html>[]
+</html>
