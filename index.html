@@ -4,33 +4,61 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>IND.COIN</title>
-  <link rel="icon" href="https://img.icons8.com/ios-filled/100/ffffff/play--v1.png" type="image/png">
+  <link rel="icon" href="https://i.ibb.co/xqLwJ8bd/IMG-20250518-124828-459.webp" type="image/png">
   <style>
+    :root {
+      --main-grad1: #00c3ff;
+      --main-grad2: #3a7bd5;
+      --glass-bg: rgba(24,28,42,0.76);
+      --glass-blur: blur(8px);
+      --accent: #00fff7;
+      --success: #28e745;
+    }
     body {
       margin: 0;
       font-family: 'Segoe UI', Arial, sans-serif;
-      background: linear-gradient(120deg, #171b2b 0%, #181c2a 100%);
+      background:
+        linear-gradient(120deg, #171b2bcc 0%, #181c2acc 100%),
+        url('https://i.ibb.co/xqLwJ8bd/IMG-20250518-124828-459.webp') no-repeat center center fixed;
+      background-size: cover;
       color: #fff;
       min-height: 100vh;
-      perspective: 1200px;
       overflow-x: hidden;
     }
-    /* Splash */
     #splash-screen {
       position: fixed;
       top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: linear-gradient(135deg, #181c2a 60%, #23293c 100%);
+      width: 100vw; height: 100vh;
+      background:
+        linear-gradient(135deg, #181c2add 60%, #23293cdd 100%),
+        url('https://i.ibb.co/xqLwJ8bd/IMG-20250518-124828-459.webp') no-repeat center center fixed;
+      background-size: cover;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       z-index: 10000;
       box-shadow: 0 0 40px 20px #00f2ff33 inset;
+      backdrop-filter: var(--glass-blur);
+    }
+    .welcome-photo {
+      width: 118px;
+      height: 118px;
+      border-radius: 50%;
+      box-shadow: 0 2px 22px #00fff099, 0 3px 18px #1fa1ff99;
+      margin-bottom: 25px;
+      object-fit: cover;
+      border: 5px solid #222c3c99;
+      background: #181c2a;
+      transition: transform 0.2s;
+    }
+    .welcome-photo:hover {
+      transform: scale(1.08) rotate(-6deg);
+      box-shadow: 0 6px 36px #00c3ffbb;
     }
     #splash-screen h1 {
-      margin-top: 0;
-      font-size: 2.2em;
+      margin: 0 0 25px 0;
+      font-size: 2.3em;
       letter-spacing: 2px;
       font-weight: bold;
       background: linear-gradient(95deg, #ffec80 40%, #ff4e50 90%);
@@ -39,248 +67,105 @@
       text-shadow: 1px 2px 28px #ffd700aa, 0 3px 10px #f9d42380;
       filter: drop-shadow(0px 3px 18px #f9d42380);
     }
-    @keyframes bounce {
-      0%,100% { transform: translateY(0) scale(1.00) rotateY(0deg);}
-      50% { transform: translateY(-16px) scale(1.07) rotateY(6deg);}
-    }
     .start-btn-3d {
-      background: linear-gradient(135deg, #00fff7, #00aaff 70%);
+      background: linear-gradient(135deg, var(--main-grad1) 0%, var(--main-grad2) 100%);
       border: none;
       border-radius: 50%;
       box-shadow:
-        0 8px 24px #00fff066,
-        0 2px 12px #00aaff44,
-        0 1px 3px #fff;
-      width: 80px;
-      height: 80px;
+        0 12px 38px #00c3ff55,
+        0 4px 18px #3a7bd588,
+        0 1px 4px #fff9;
+      width: 94px;
+      height: 94px;
       display: flex;
       align-items: center;
       justify-content: center;
       transition: transform 0.18s, box-shadow 0.2s;
       cursor: pointer;
-      margin: 30px auto 0 auto;
+      margin: 34px auto 0 auto;
       position: relative;
       outline: none;
-      animation: bounce 2s infinite;
+      animation: bounce 2.1s infinite;
+      overflow: visible;
+      border: 3.5px solid #fff7;
     }
     .start-btn-3d:active {
       transform: scale(0.95) translateY(3px);
-      box-shadow: 0 3px 12px #00ffaeaa, 0 0px 2px #fff;
+      box-shadow: 0 3px 12px #00c3ffaa, 0 0px 2px #fff;
     }
     .start-btn-3d:hover {
-      transform: scale(1.10) rotateY(10deg);
+      transform: scale(1.12) rotateY(8deg);
       box-shadow:
-        0 18px 44px #00ffe066,
-        0 6px 16px #00d2ff44;
+        0 18px 44px #00c3ff77,
+        0 10px 32px #3a7bd5cc;
     }
     .start-icon-3d {
-      width: 46px;
-      height: 46px;
+      width: 55px;
+      height: 55px;
       filter:
-        drop-shadow(0px 0px 14px #00fff0cc)
-        drop-shadow(0 3px 16px #fff8);
+        drop-shadow(0px 0px 20px #00c3ffcc)
+        drop-shadow(0 2px 12px #fff8);
       transition: filter 0.2s, transform 0.2s;
     }
     .start-btn-3d:hover .start-icon-3d {
       filter:
-        drop-shadow(0px 0px 24px #00ffe0)
+        drop-shadow(0px 0px 38px #00c3ff)
         drop-shadow(0 6px 32px #fff6);
-      transform: scale(1.16) rotateZ(8deg);
+      transform: scale(1.19) rotateZ(4deg);
     }
-    /* Main App 3D Style */
-    .tab-content {
-      padding-bottom: 90px;
-      margin-top: 18px;
-      transition: filter 0.2s;
-      filter: drop-shadow(0 2px 10px #00fff099);
+    @keyframes bounce {
+      0%,100% { transform: translateY(0) scale(1.00) rotateY(0deg);}
+      50% { transform: translateY(-18px) scale(1.11) rotateY(7deg);}
     }
-    .centered {
-      text-align: center;
-      padding: 20px;
-      perspective: 900px;
-    }
-    .balance-card, .more-item, .centered > div:not(.balance-card):not(.fan-image):not(.button-row):not(.social-icons) {
+    .tab-content, .balance-card, .more-item, .centered > div:not(.balance-card):not(.fan-image):not(.button-row):not(.social-icons) {
+      background: var(--glass-bg);
       box-shadow:
         0 8px 32px #00fff033,
-        0 1.5px 6px 0 #00e0ff99,
+        0 2.5px 8px 0 #00e0ff99,
         0 2px 10px 1px #1d2c3d,
         0 4px 18px #23293c99 inset;
-      background: linear-gradient(135deg, #262d44 80%, #20243b 100%);
       border-radius: 18px;
-      transition: transform 0.2s cubic-bezier(.25,.8,.25,1), box-shadow 0.2s;
+      backdrop-filter: var(--glass-blur);
+      transition: transform 0.23s cubic-bezier(.25,.8,.25,1), box-shadow 0.23s;
       transform-style: preserve-3d;
     }
-    .balance-card {
-      margin: 32px auto 22px;
-      padding: 18px 24px;
-      max-width: 340px;
-      font-size: 20px;
-    }
-    .balance-card:hover {
-      transform: rotateY(4deg) scale(1.03) translateY(-6px);
-      box-shadow:
-        0 20px 60px 0 #00ffe033,
-        0 7px 24px 3px #00e0ffa0;
-    }
-    .fan-image {
-      width: 200px; height: 200px;
-      margin: 28px auto 8px;
-      background-image: url('https://cdn.pixabay.com/photo/2021/05/09/07/11/fan-6240473_960_720.png');
-      background-size: cover;
-      background-position: center;
-      border-radius: 50%;
-      box-shadow: 0 12px 38px #00eaff77, 0 3px 8px #4dfff040;
-      animation: spin 3s linear infinite;
-      border: 6px solid #232b40;
-      filter: drop-shadow(0 1px 24px #00ffe066);
-      perspective: 900px;
-    }
-    @keyframes spin {
-      0%   { transform: rotateY(0) rotateZ(0); }
-      100% { transform: rotateY(360deg) rotateZ(360deg); }
-    }
-    .button-row {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      margin: 22px 0 28px;
-      perspective: 900px;
-    }
-    .tonix-button {
-      background: linear-gradient(135deg, #00fff7 40%, #00aaff 100%);
-      color: #232323;
-      font-size: 18px;
-      font-weight: bold;
-      padding: 13px 34px;
-      border: none;
-      border-radius: 18px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      cursor: pointer;
-      box-shadow:
-        0 6px 22px #00fff944,
-        0 2px 4px #002d3644,
-        0 2px 16px #fff;
-      transition: transform 0.15s, box-shadow 0.2s, background 0.3s;
-      transform-style: preserve-3d;
-      outline: none;
-    }
-    .tonix-button:active {
-      transform: scale(0.95) translateY(3px) rotateX(2deg);
-      box-shadow:
-        0 2px 6px #00ffae88,
-        0 0px 2px #fff;
-    }
-    .tonix-button:hover {
-      background: linear-gradient(135deg, #00eaff 50%, #00ffae 100%);
-      color: #12142c;
-      transform: translateY(-4px) scale(1.06) rotateX(4deg);
-      box-shadow:
-        0 18px 44px #00ffe066,
-        0 6px 16px #00c2a044;
-    }
-    .social-icons {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin-top: 20px;
-    }
-    .social-icons img {
-      width: 38px; height: 38px;
-      border-radius: 12px;
-      cursor: pointer;
-      filter: brightness(1.2) drop-shadow(0 4px 12px #00fff7);
-      background: #181d2e;
-      box-shadow: 0 2px 8px #00eaff55;
-      transition: filter 0.3s, box-shadow 0.2s, transform 0.2s;
-    }
-    .social-icons img:hover {
-      filter: brightness(1) drop-shadow(0 8px 30px #00fff7cc);
-      box-shadow: 0 6px 18px #00ffae88, 0 0px 16px #fff7;
-      transform: scale(1.14) rotateY(10deg);
-    }
-    .tab-bar {
-      display: flex;
-      justify-content: space-around;
-      background: linear-gradient(145deg,#1b2237 80%, #232a4a 100%);
-      padding: 14px 0 10px;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      z-index: 1000;
-      box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.55), 0 -1px 14px #00fff033;
-      border-top-left-radius: 18px;
-      border-top-right-radius: 18px;
-      backdrop-filter: blur(6px);
-    }
-    .tab-button {
-      background: linear-gradient(145deg, #232a4a 70%, #1b2237 100%);
-      border: none;
-      border-radius: 15px;
-      color: #fff;
-      font-size: 15px;
-      padding: 11px 12px 8px 12px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      cursor: pointer;
-      box-shadow: 0 2px 8px #00fff055;
-      transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
-      transform-style: preserve-3d;
-    }
-    .tab-button img {
-      width: 29px;
-      height: 29px;
-      margin-bottom: 5px;
-      filter: drop-shadow(0 4px 8px #00fff044);
-    }
-    .tab-button.active {
-      background: linear-gradient(145deg, #00d9ff 70%, #00ffae 100%);
-      color: #181d2e;
-      box-shadow: inset 0 2px 16px #00fff044, 0 2px 18px #00fff055;
-      transform: translateY(-5px) scale(1.08) rotateX(8deg);
-    }
-    .more-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: linear-gradient(135deg, #20243b 70%, #232b40 100%);
-      padding: 14px 18px;
-      border-radius: 14px;
-      margin: 18px 0;
-      font-size: 17px;
-      color: #fff;
-      cursor: pointer;
-      box-shadow: 0 2px 10px #00eaff44;
-      transition: background 0.3s, box-shadow 0.2s, transform 0.2s;
-    }
-    .more-item:hover {
-      background: #232a46;
-      box-shadow: 0 8px 24px #00fff033;
-      transform: scale(1.03) translateY(-2px) rotateY(4deg);
-    }
-    h1, h2, h3 {
-      filter: drop-shadow(0 3px 8px #00fff066);
-      letter-spacing: 1px;
-    }
+    .tab-content { padding-bottom: 90px; margin-top: 18px; border-radius: 18px;}
+    .centered { text-align: center; padding: 20px; perspective: 900px;}
+    .balance-card { margin: 32px auto 22px; padding: 18px 24px; max-width: 350px; font-size: 21px; border: 2.5px solid #00fff088; background: linear-gradient(128deg, #1e2436e6 60%, #232b45e0 100%);}
+    .balance-card:hover { transform: rotateY(4deg) scale(1.04) translateY(-5px); box-shadow: 0 24px 60px 0 #00ffe033, 0 8px 32px 3px #00e0ffa0;}
+    .fan-image { width: 174px; height: 174px; margin: 28px auto 8px; background-image: url('https://i.ibb.co/xqLwJ8bd/IMG-20250518-124828-459.webp'); background-size: cover; background-position: center; border-radius: 50%; box-shadow: 0 12px 38px #00eaff77, 0 3px 8px #4dfff040; animation: spin 3s linear infinite; border: 6px solid #232b40; filter: drop-shadow(0 1px 24px #00ffe066); perspective: 900px; background-color: #181c2a;}
+    @keyframes spin { 0%   { transform: rotateY(0) rotateZ(0);} 100% { transform: rotateY(360deg) rotateZ(360deg);} }
+    .button-row { display: flex; justify-content: center; gap: 16px; margin: 22px 0 28px; perspective: 900px;}
+    .tonix-button { background: linear-gradient(135deg, var(--main-grad1) 40%, var(--main-grad2) 100%); color: #232323; font-size: 18px; font-weight: bold; padding: 13px 34px; border: none; border-radius: 18px; display: flex; align-items: center; gap: 10px; cursor: pointer; box-shadow: 0 8px 24px #00fff955, 0 2px 6px #002d3644, 0 2px 16px #fff; transition: transform 0.17s, box-shadow 0.21s, background 0.32s; transform-style: preserve-3d; outline: none;}
+    .tonix-button:active { transform: scale(0.97) translateY(2px) rotateX(2deg); box-shadow: 0 2px 6px #00ffae88, 0 0px 2px #fff;}
+    .tonix-button:hover { background: linear-gradient(135deg, #00eaff 50%, #00ffae 100%); color: #12142c; transform: translateY(-3px) scale(1.07) rotateX(4deg); box-shadow: 0 15px 44px #00ffe066, 0 6px 16px #00c2a044;}
+    .tonix-button img { filter: drop-shadow(0 2px 6px #00fff088);}
+    .social-icons { display: flex; justify-content: center; gap: 15px; margin-top: 20px;}
+    .social-icons img { width: 38px; height: 38px; border-radius: 12px; cursor: pointer; filter: brightness(1.2) drop-shadow(0 4px 12px #00fff7); background: #181d2e; box-shadow: 0 2px 8px #00eaff55; transition: filter 0.3s, box-shadow 0.2s, transform 0.2s;}
+    .social-icons img:hover { filter: brightness(1) drop-shadow(0 8px 30px #00fff7cc); box-shadow: 0 6px 18px #00ffae88, 0 0px 16px #fff7; transform: scale(1.14) rotateY(10deg);}
+    .tab-bar { display: flex; justify-content: space-around; background: linear-gradient(145deg,#1b2237 80%, #232a4a 100%); padding: 14px 0 10px; position: fixed; bottom: 0; width: 100%; z-index: 1000; box-shadow: 0 -4px 24px rgba(0,0,0,0.55), 0 -1px 14px #00fff033; border-top-left-radius: 18px; border-top-right-radius: 18px; backdrop-filter: blur(7px);}
+    .tab-button { background: linear-gradient(145deg, #232a4a 70%, #1b2237 100%); border: none; border-radius: 15px; color: #fff; font-size: 15px; padding: 11px 12px 8px 12px; display: flex; flex-direction: column; align-items: center; cursor: pointer; box-shadow: 0 2px 8px #00fff055; transition: background 0.3s, transform 0.2s, box-shadow 0.2s; transform-style: preserve-3d;}
+    .tab-button img { width: 29px; height: 29px; margin-bottom: 5px; filter: drop-shadow(0 4px 8px #00fff044);}
+    .tab-button.active { background: linear-gradient(145deg, #00d9ff 70%, #00ffae 100%); color: #181d2e; box-shadow: inset 0 2px 16px #00fff044, 0 2px 18px #00fff055; transform: translateY(-5px) scale(1.08) rotateX(8deg);}
+    .more-item { display: flex; justify-content: space-between; align-items: center; background: linear-gradient(135deg, #20243b 70%, #232b40 100%); padding: 14px 18px; border-radius: 14px; margin: 18px 0; font-size: 17px; color: #fff; cursor: pointer; box-shadow: 0 2px 10px #00eaff44; transition: background 0.3s, box-shadow 0.2s, transform 0.2s;}
+    .more-item:hover { background: #232a46; box-shadow: 0 8px 24px #00fff033; transform: scale(1.03) translateY(-2px) rotateY(4deg);}
+    h1, h2, h3 { filter: drop-shadow(0 3px 8px #00fff066); letter-spacing: 1px;}
   </style>
 </head>
 <body>
 
-<!-- Splash Screen with only 3D Start Icon (no logo image) -->
+<!-- Splash Screen -->
 <div id="splash-screen">
+  <img src="https://i.ibb.co/xqLwJ8bd/IMG-20250518-124828-459.webp" alt="Welcome" class="welcome-photo" />
   <h1>IND.COIN</h1>
   <button class="start-btn-3d" id="startGameBtn" tabindex="0">
-    <img src="https://img.icons8.com/ios-filled/100/ffffff/play--v1.png" alt="Start" class="start-icon-3d"/>
+    <img src="https://img.icons8.com/ios-filled/90/ffffff/play--v1.png" alt="Start" class="start-icon-3d"/>
   </button>
-  <div style="color:#00fff7; margin-top:8px; font-weight:700; font-size:16px;">START</div>
 </div>
 
 <!-- Home Tab Content -->
 <div id="home" class="tab-content" style="display:none;">
   <div class="centered">
-    <h1>IND.COIN</h1>
     <div class="balance-card" id="balance-card">Balance: <strong>0.000000 IND.COIN</strong></div>
     <div class="fan-image"></div>
     <div style="font-size: 18px; margin-bottom: 6px;">
@@ -299,14 +184,6 @@
         Boost
       </button>
     </div>
-    <div style="margin:14px 0 2px; color:#ffeb3b; font-size:16px; font-weight:600;">
-    </div>
-    <div class="button-row">
-
-        <img src="https://img.icons8.com/ios-filled/50/add-user-group-man-man.png" width="24" />
-         </h1>social media update<h1>
-      </button>
-    </div>
     <div class="social-icons">
       <a href="https://t.me/Unique_IND_coin_bot" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram" /></a>
       <a href="https://www.facebook.com/share/1Frxw91MUM/" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" /></a>
@@ -322,9 +199,11 @@
 <!-- Friends Tab Content -->
 <div id="friends" class="tab-content" style="display:none;">
   <div class="centered">
-    <h2>Friends</h2>
+    <h2>
+      <img src="https://img.icons8.com/ios-filled/50/ffffff/group.png" style="vertical-align:middle;width:32px;height:32px;"/> Friends
+    </h2>
     <p>Invite and view your friends here.</p>
-    <button onclick="inviteFriend()" class="tonix-button" style="background: linear-gradient(135deg, #28e745 40%, #28a745 100%); color:#fff;">
+    <button onclick="inviteFriend()" class="tonix-button" style="background: linear-gradient(135deg, var(--success) 40%, #28a745 100%); color:#fff;">
       <img src="https://img.icons8.com/ios-filled/50/add-user-group-man-man.png" width="24" />
       Invite Friends
     </button>
@@ -346,10 +225,12 @@
   </div>
 </div>
 
-<!-- Wallet Tab Content -->
+<!-- Wallet Tab Content (Balance Card IS BACK!) -->
 <div id="wallet" class="tab-content" style="display:none;">
   <div class="centered">
-    <h2>Wallet</h2>
+    <h2>
+      <img src="https://img.icons8.com/ios-filled/50/ffffff/wallet-app.png" style="vertical-align:middle;width:32px;height:32px;"/> Wallet
+    </h2>
     <div class="balance-card" id="wallet-balance-card">Wallet Balance: <strong>0.000000 IND.COIN</strong></div>
     <p style="color: gold; font-size: 16px; margin-top: 20px;">Withdrawal program soon...</p>
   </div>
@@ -358,7 +239,9 @@
 <!-- Missions Tab Content -->
 <div id="missions" class="tab-content" style="display:none;">
   <div class="centered">
-    <h2>Missions</h2>
+    <h2>
+      <img src="https://img.icons8.com/ios-filled/50/ffffff/goal.png" style="vertical-align:middle;width:32px;height:32px;"/> Missions
+    </h2>
     update soon...
   </div>
 </div>
@@ -370,28 +253,27 @@
       <div style="color: #aaa;">Welcome</div>
       <div style="font-weight: bold; font-size: 18px;">IND Coin</div>
     </div>
-    <!-- Removed logo image here too -->
   </div>
   <div style="padding: 0 20px;">
     <div class="more-item">
-      <span># My ID</span>
+      <span><img src="https://img.icons8.com/ios-filled/50/ffffff/id-verified.png" width="20" style="vertical-align:middle;"/> My ID</span>
       <span id="userId2">Loading...</span>
     </div>
     <div class="more-item">
-      <span>Language</span>
+      <span><img src="https://img.icons8.com/ios-filled/50/ffffff/language.png" width="20" style="vertical-align:middle;"/> Language</span>
       <span><img src="https://flagcdn.com/us.svg" width="20" style="vertical-align: middle;"/> English</span>
     </div>
     <div class="more-item" onclick="inviteFriend()">
-      <span>Invite Friends</span>
+      <span><img src="https://img.icons8.com/ios-filled/50/add-user-group-man-man.png" width="20" style="vertical-align:middle;"/> Invite Friends</span>
     </div>
     <div class="more-item" onclick="alert('Contacting support...')">
-      <span>Contact Support</span>
+      <span><img src="https://img.icons8.com/ios-filled/50/ffffff/help.png" width="20" style="vertical-align:middle;"/> Contact Support</span>
     </div>
     <div class="more-item" onclick="alert('Legal page will open.')">
-      <span>Legal Information</span>
+      <span><img src="https://img.icons8.com/ios-filled/50/ffffff/legal.png" width="20" style="vertical-align:middle;"/> Legal Information</span>
     </div>
     <div class="more-item" style="color: gold; cursor: default;">
-      <span>Ratings & Leagues (soon)</span>
+      <span><img src="https://img.icons8.com/ios-filled/50/ffffff/trophy.png" width="20" style="vertical-align:middle;"/> Ratings & Leagues (soon)</span>
     </div>
   </div>
 </div>
@@ -432,25 +314,21 @@
     if(document.getElementById('hashrate-display')) document.getElementById('hashrate-display').innerText = hashrate;
     if(document.getElementById('wallet-balance-card')) document.getElementById('wallet-balance-card').innerHTML = `Wallet Balance: <strong>${walletBalance.toFixed(6)} IND.COIN</strong>`;
   }
-
   function mineCoins(elapsedSeconds) {
     miningBalance += elapsedSeconds * hashrate * miningRate;
     localStorage.setItem("miningBalance", miningBalance.toString());
     updateMiningDisplay();
   }
-
   function startAutoMining() {
     const lastTime = parseFloat(localStorage.getItem("lastMiningTime")) || Date.now();
     const now = Date.now();
     const elapsed = Math.floor((now - lastTime) / 1000);
     if (elapsed > 0) mineCoins(elapsed);
-
     setInterval(() => {
       mineCoins(1);
       localStorage.setItem("lastMiningTime", Date.now().toString());
     }, 1000);
   }
-
   function startApp() {
     document.getElementById("splash-screen").style.display = "none";
     document.querySelectorAll(".tab-content").forEach(tab => tab.style.display = "none");
@@ -459,18 +337,15 @@
     updateMiningDisplay();
     startAutoMining();
   }
-
-  // Attach startApp to start button click
   document.getElementById("startGameBtn").onclick = startApp;
-
   function showTab(tabId) {
     document.querySelectorAll(".tab-content").forEach(tab => tab.style.display = "none");
     document.getElementById(tabId).style.display = "block";
     document.querySelectorAll(".tab-button").forEach(btn => btn.classList.remove("active"));
     const clickedButton = document.getElementById('btn-' + tabId);
     if (clickedButton) clickedButton.classList.add("active");
+    updateMiningDisplay(); // Update display on tab switch
   }
-
   function claimCoins() {
     if (miningBalance > 0) {
       walletBalance += miningBalance;
@@ -483,11 +358,9 @@
       alert("No IND.COIN available to claim.");
     }
   }
-
   function boostHashrate() {
     alert("Boost feature coming soon!");
   }
-
   function inviteFriend() {
     const userId = localStorage.getItem("userId");
     const inviteLink = `${window.location.origin}?ref=${userId}`;
@@ -495,7 +368,6 @@
       .then(() => alert("Invite link copied!\n" + inviteLink))
       .catch(() => alert("Failed to copy invite link."));
   }
-
   // Set User ID on both places
   const userId = localStorage.getItem("userId") || (() => {
     const uid = Math.floor(Math.random() * 1e10).toString();
@@ -506,4 +378,4 @@
   if(document.getElementById("userId2")) document.getElementById("userId2").innerText = userId;
 </script>
 </body>
-</html>
+</html>[]
