@@ -211,10 +211,6 @@
       <img src="https://img.icons8.com/ios-filled/50/ffffff/group.png" style="vertical-align:middle;width:32px;height:32px;"/> Friends
     </h2>
     <p>Invite and view your friends here.</p>
-    <button onclick="inviteFriend()" class="tonix-button" style="background: linear-gradient(135deg, var(--success) 40%, #28a745 100%); color:#fff;">
-      <img src="https://img.icons8.com/ios-filled/50/add-user-group-man-man.png" width="24" />
-      Invite Friends
-    </button>
     <div style="margin-top: 20px; background: #1a1a1a; padding: 15px; border-radius: 14px; box-shadow: 0 2px 10px #00eaff44;">
       <h3>🪙 Level Income IND.COIN 🪙</h3>
       <ul style="text-align: left;">
@@ -233,24 +229,31 @@
   </div>
 </div>
 
-<!-- Wallet Tab Content -->
-<div id="wallet" class="tab-content" style="display:none;">
+<!-- Assets Tab Content -->
+<div id="assets" class="tab-content" style="display:none;">
   <div class="centered">
     <h2>
-      <img src="https://img.icons8.com/ios-filled/50/ffffff/wallet-app.png" style="vertical-align:middle;width:32px;height:32px;"/> Wallet
+      <img src="https://img.icons8.com/ios-filled/50/ffd700/coins--v1.png" style="vertical-align:middle;width:32px;height:32px;"/> Assets
     </h2>
-    <div class="balance-card" id="wallet-balance-card">Wallet Balance: <strong>0.000000 IND.COIN</strong></div>
+    <div class="balance-card" id="wallet-balance-card">Assets Balance: <strong>0.000000 IND.COIN</strong></div>
     <p style="color: gold; font-size: 16px; margin-top: 20px;">Withdrawal program soon...</p>
   </div>
 </div>
 
-<!-- Missions Tab Content -->
-<div id="missions" class="tab-content" style="display:none;">
+<!-- Stake Tab Content -->
+<div id="stake" class="tab-content" style="display:none;">
   <div class="centered">
     <h2>
-      <img src="https://img.icons8.com/ios-filled/50/ffffff/goal.png" style="vertical-align:middle;width:32px;height:32px;"/> Missions
+      <img src="https://img.icons8.com/ios-filled/50/ffffff/bank-cards.png" style="vertical-align:middle;width:32px;height:32px;"/> Stake
     </h2>
-    update soon...
+    <p style="font-size:18px;color:#00fff7;">Stake your IND.COIN and earn rewards!</p>
+    <button class="tonix-button" onclick="alert('Staking coming soon!')" style="margin-top:15px;">
+      <img src="https://img.icons8.com/ios-filled/50/stack-of-coins.png" width="24" />
+      Stake Now
+    </button>
+    <div style="margin-top:22px;color:gold;">
+      <strong>Staking feature coming soon.<br>Stay tuned!</strong>
+    </div>
   </div>
 </div>
 
@@ -271,9 +274,6 @@
       <span><img src="https://img.icons8.com/ios-filled/50/ffffff/language.png" width="20" style="vertical-align:middle;"/> Language</span>
       <span><img src="https://flagcdn.com/us.svg" width="20" style="vertical-align: middle;"/> English</span>
     </div>
-    <div class="more-item" onclick="inviteFriend()">
-      <span><img src="https://img.icons8.com/ios-filled/50/add-user-group-man-man.png" width="20" style="vertical-align:middle;"/> Invite Friends</span>
-    </div>
     <div class="more-item" onclick="alert('Contacting support...')">
       <span><img src="https://img.icons8.com/ios-filled/50/ffffff/help.png" width="20" style="vertical-align:middle;"/> Contact Support</span>
     </div>
@@ -288,9 +288,9 @@
 
 <!-- Tab Bar -->
 <div class="tab-bar" style="display:none;">
-  <button onclick="showTab('wallet')" class="tab-button" id="btn-wallet">
-    <img src="https://img.icons8.com/ios-filled/50/ffffff/wallet-app.png" />
-    Wallet
+  <button onclick="showTab('assets')" class="tab-button" id="btn-assets">
+    <img src="https://img.icons8.com/ios-filled/50/ffd700/coins--v1.png" />
+    Assets
   </button>
   <button onclick="showTab('friends')" class="tab-button" id="btn-friends">
     <img src="https://img.icons8.com/ios-filled/50/ffffff/group.png" />
@@ -300,9 +300,9 @@
     <img src="https://img.icons8.com/ios-filled/50/ffffff/home.png" />
     Home
   </button>
-  <button onclick="showTab('missions')" class="tab-button" id="btn-missions">
-    <img src="https://img.icons8.com/ios-filled/50/ffffff/goal.png" />
-    Missions
+  <button onclick="showTab('stake')" class="tab-button" id="btn-stake">
+    <img src="https://img.icons8.com/ios-filled/50/ffffff/bank-cards.png" />
+    Stake
   </button>
   <button onclick="showTab('more')" class="tab-button" id="btn-more">
     <img src="https://img.icons8.com/ios-filled/50/ffffff/settings-sliders.png" />
@@ -379,9 +379,8 @@ function giveSocialBonus(platform, e) {
     localStorage.setItem("walletBalance", walletBalance.toString());
     localStorage.setItem(bonusKey, "1");
     updateMiningDisplay();
-    alert(`.100 IND.COIN bonus for following on ${platform.charAt(0).toUpperCase() + platform.slice(1)}!`);
+    alert(`1000 IND.COIN bonus for following on ${platform.charAt(0).toUpperCase() + platform.slice(1)}!`);
   }
-  // Link will open as normal
 }
 
 // --- UPDATE DISPLAY FUNCTION (include referral wallet) ---
@@ -397,7 +396,9 @@ function updateMiningDisplay() {
   if(document.getElementById('balance-card')) document.getElementById('balance-card').innerHTML = `Balance: <strong>${walletBalance.toFixed(6)} IND.COIN</strong>`;
   if(document.getElementById('live-balance')) document.getElementById('live-balance').innerText = `${miningBalance.toFixed(9)} IND.coin`;
   if(document.getElementById('hashrate-display')) document.getElementById('hashrate-display').innerText = hashrate;
-  if(document.getElementById('wallet-balance-card')) document.getElementById('wallet-balance-card').innerHTML = `Wallet Balance: <strong>${walletBalance.toFixed(6)} IND.COIN</strong>`;
+  if(document.getElementById('wallet-balance-card')) document.getElementById('wallet-balance-card').innerHTML = `Assets Balance: <strong>${walletBalance.toFixed(6)} IND.COIN</strong>`;
+  if(document.getElementById("userId")) document.getElementById("userId").innerText = userId;
+  if(document.getElementById("userId2")) document.getElementById("userId2").innerText = userId;
 }
 
 function mineCoins(elapsedSeconds) {
@@ -418,51 +419,4 @@ function startAutoMining() {
 function startApp() {
   document.getElementById("splash-screen").style.display = "none";
   document.querySelectorAll(".tab-content").forEach(tab => tab.style.display = "none");
-  document.getElementById("home").style.display = "block";
-  document.querySelector(".tab-bar").style.display = "flex";
-  updateMiningDisplay();
-  startAutoMining();
-}
-document.getElementById("startGameBtn").onclick = startApp;
-function showTab(tabId) {
-  document.querySelectorAll(".tab-content").forEach(tab => tab.style.display = "none");
-  document.getElementById(tabId).style.display = "block";
-  document.querySelectorAll(".tab-button").forEach(btn => btn.classList.remove("active"));
-  const clickedButton = document.getElementById('btn-' + tabId);
-  if (clickedButton) clickedButton.classList.add("active");
-  updateMiningDisplay();
-}
-function claimCoins() {
-  if (miningBalance > 0) {
-    walletBalance += miningBalance;
-    miningBalance = 0;
-    localStorage.setItem("walletBalance", walletBalance.toString());
-    localStorage.setItem("miningBalance", miningBalance.toString());
-    updateMiningDisplay();
-    alert("Successfully Claimed!");
-  } else {
-    alert("No IND.COIN available to claim.");
-  }
-}
-function boostHashrate() {
-  alert("Boost feature coming soon!");
-}
-function inviteFriend() {
-  const inviteLink = `${window.location.origin}?ref=${userId}`;
-  if (navigator.share) {
-    navigator.share({
-      title: "Join IND.COIN!",
-      text: "Mere invite link se join karo aur rewards pao:",
-      url: inviteLink
-    }).catch(() => {});
-  } else {
-    navigator.clipboard.writeText(inviteLink)
-      .then(() => alert("Invite link copied!\n" + inviteLink + "\n\nKisi bhi app mein paste kar ke bhej sakte ho."))
-      .catch(() => alert("Failed to copy invite link."));
-  }
-}
-if(document.getElementById("userId")) document.getElementById("userId").innerText = userId;
-if(document.getElementById("userId2")) document.getElementById("userId2").innerText = userId;
-</script>
-</body>
-</html>
+  document.getElementById("hom
