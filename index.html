@@ -1,4 +1,4 @@
-[]<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -10,27 +10,47 @@
     body {font-family:'Segoe UI',Arial,sans-serif;color:#202124;background:#f7fafd;min-height:100vh;}
     #splash-screen {position:fixed;top:0;left:0;width:100vw;height:100vh;background:linear-gradient(135deg,#1d9bf0 60%,#23293cdd 100%);display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:10000;}
     .welcome-photo {width:108px;height:108px;border-radius:50%;margin-bottom:22px;object-fit:cover;background:#fff;box-shadow:0 2px 22px #00fff099,0 3px 18px #1fa1ff55;}
+    .splash-welcome-text {color:#fff;font-size:2em;font-weight:bold;letter-spacing:1px;line-height:1.15;text-align:center;margin-bottom:18px;}
     .start-btn-3d {background:#1d9bf0;border:none;border-radius:50%;width:84px;height:84px;color:#fff;font-size:2rem;display:flex;align-items:center;justify-content:center;margin:24px auto 0 auto;box-shadow:0 2px 12px #1d9bf044;cursor:pointer;transition:background .18s,box-shadow .18s;}
     .start-btn-3d:hover {background:#188ad6;box-shadow:0 4px 18px #1d9bf077;}
     .start-icon-3d {width:48px;height:48px;}
     .tab-bar {display:flex;justify-content:space-around;background:#fff;border-top:1.5px solid #e0e3e6;padding:4px 0 2px 0;position:fixed;bottom:0;width:100vw;height:60px;z-index:1000;box-shadow:0 -2px 12px #cce6fa33;}
     .tab-button {background:none;border:none;border-radius:8px;color:#344054;font-size:13px;display:flex;flex-direction:column;align-items:center;padding:3px 0 1px 0;flex:1;transition:background 0.15s,color 0.15s;height:56px;font-weight:500;}
-    .tab-button img {width:26px;height:26px;margin-bottom:3px;filter:grayscale(0.4);}
+    .tab-button img {width:26px;height:26px;margin-bottom:3px;}
     .tab-button.active,.tab-button:focus {background:#e8f3fc;color:#1d9bf0;}
-    .tab-button.active img,.tab-button:focus img {filter:grayscale(0) drop-shadow(0 2px 6px #1d9bf022);}
+    .tab-button.active img,.tab-button:focus img {filter:drop-shadow(0 2px 6px #ffd70044);}
     .tab-content {min-height:calc(100vh - 60px);padding:0 0 90px 0;margin:0;box-sizing:border-box;background:#f7fafd;}
     .centered {max-width:480px;margin:0 auto;padding:18px 18px 8px 18px;text-align:center;background:#fff;border-radius:14px;box-shadow:0 2px 18px #1d9bf008;margin-top:18px;}
-    .balance-card {margin:22px auto 18px;padding:13px 22px;max-width:310px;font-size:19px;border-radius:12px;background:#e8f3fc;color:#1d9bf0;font-weight:600;border:none;box-shadow:0 1px 8px #1d9bf022;}
+    .balance-card {margin:18px auto 12px;padding:13px 22px;max-width:310px;font-size:19px;border-radius:12px;background:#e8f3fc;color:#1d9bf0;font-weight:600;border:none;box-shadow:0 1px 8px #1d9bf022;}
+    .balance-card.usdt {margin-top:22px;background:#e5f7f0;color:#12b886;}
     .fan-image {width:124px;height:124px;margin:18px auto 8px;border-radius:50%;background-image:url('https://i.ibb.co/xqLwJ8bd/IMG-20250518-124828-459.webp');background-size:cover;background-position:center;box-shadow:0 4px 14px #1d9bf044;border:2.5px solid #1d9bf0;background-color:#fff;animation:spin 2.5s linear infinite;}
-    @keyframes spin {0%{transform:rotate(0);}100%{transform:rotate(360deg);}}
+    @keyframes spin {0%{transform:rotate(0);}100%{transform:rotate(360deg);}
+    }
     .button-row {display:flex;justify-content:center;gap:13px;margin:20px 0 24px;}
-    .tfun-btn {background:#1d9bf0;color:#fff;font-size:15px;font-weight:600;padding:11px 28px;border:none;border-radius:8px;display:flex;align-items:center;gap:7px;cursor:pointer;box-shadow:none;outline:none;transition:background 0.15s;}
-    .tfun-btn:hover,.tfun-btn:focus {background:#188ad6;}
-    .exchange-btn {background:#e8f3fc;color:#1d9bf0;font-weight:700;justify-content:center;border:1.5px solid #1d9bf0;}
-    .exchange-btn img {margin-right:9px;}
+    .tfun-btn {
+      background:#fff;
+      color:#1d9bf0;
+      font-size:15px;
+      font-weight:600;
+      padding:11px 28px;
+      border:1.3px solid #e0e3e6;
+      border-radius:8px;
+      display:flex;
+      align-items:center;
+      gap:7px;
+      cursor:pointer;
+      box-shadow:none;
+      outline:none;
+      transition:background 0.15s, color 0.15s;
+    }
+    .tfun-btn:hover,.tfun-btn:focus {
+      background:#e8f3fc;
+      color:#ffd700;
+    }
+    .tfun-btn img {filter: grayscale(0) brightness(1) sepia(1) hue-rotate(-30deg) saturate(5) brightness(1.2);}
+    .exchange-btn {font-weight:700;justify-content-right:9px;}
     .exchange-row {display:flex;flex-direction:column;gap:12px;margin-top:12px;}
-    .exchange-row .tfun-btn {background:#fff;color:#1d9bf0;border:1.3px solid #e0e3e6;}
-    .exchange-row .tfun-btn:hover {background:#e8f3fc;}
+    .assets-options {display:flex;flex-direction:column;gap:14px;margin:22px 0;}
     .social-icons {display:flex;justify-content:center;gap:9px;margin-top:16px;}
     .social-icons img {width:32px;height:32px;border-radius:7px;cursor:pointer;border:1px solid #e0e3e6;background:#fff;box-shadow:0 1px 8px #1d9bf022;transition:box-shadow 0.14s,border 0.14s;}
     .social-icons img:hover {border:1.4px solid #1d9bf0;box-shadow:0 3px 14px #1d9bf033;}
@@ -38,94 +58,16 @@
     #mytab label {font-size:14px;font-weight:500;color:#344054;margin-bottom:2px;margin-top:6px;display:block;}
     #mytab input,#mytab select {width:100%;padding:12px 11px;border-radius:7px;border:1.3px solid #e0e3e6;font-size:15px;background:#f7fafd;color:#18202a;outline:none;margin-bottom:0;font-weight:500;box-sizing:border-box;transition:border 0.16s;}
     #mytab input:focus,#mytab select:focus {border:1.8px solid #1d9bf0;background:#fff;}
-    .tfun-save-btn {width:100%;display:flex;align-items:center;justify-content:center;gap:9px;padding:13px 0 12px 0;border-radius:8px;border:none;font-size:16px;font-weight:600;background:#1d9bf0;color:#fff;box-shadow:none;letter-spacing:.2px;margin-top:10px;transition:background 0.18s;}
-    .tfun-save-btn[disabled] {background:#b2cbe2 !important;color:#fff !important;opacity:0.6;cursor:not-allowed;}
-    .tfun-save-btn:hover,.tfun-save-btn:focus {background:#188ad6;color:#fff;}
-    .tfun-save-btn img {margin:0;display:inline-block;}
+    .tfun-save-btn {width:100%;display:flexalign-items:center;justify-content:center;gap:9px;padding:13px 0 12px 0;border-radius:8px;border:1.3px solid #e0e3e6;font-size:16px;font-weight:600;background:#fff;color:#1d9bf0;box-shadow:none;letter-spacing:.2px;margin-top:10px;transition:background 0.18s, color 0.18s;}
+    .tfun-save-btn[disabled] {background:#e0e3e6 !important;color:#b2cbe2 !important;opacity:0.6;cursor:not-allowed;}
+    .tfun-save-btn:hover,.tfun-save-btn:focus {background:#e8f3fc;color:#ffd700;}
+    .tfun-save-btn img {margin:0;display:inline-block;filter: grayscale(0) brightness(1) sepia(1) hue-rotate(-30deg) saturate(5) brightness(1.2);}
     #profileSavedMsg {color:#1d9bf0;text-align:center;margin-top:12px;font-size:15px;font-weight:600;display:none;}
-    /* Assets tab ke normal options */
-    #assets .assets-options .tfun-btn {
-      background: #fff !important;
-      color: #222 !important;
-      font-weight: 400 !important;
-      justify-content: flex-start !important;
-      box-shadow: none !important;
-      border: 1.2px solid #e0e3e6 !important;
-      transition: background 0.15s, color 0.15s;
-    }
-    #assets .assets-options .tfun-btn:hover, 
-    #assets .assets-options .tfun-btn:focus {
-      background: #f7fafd !important;
-      color: #1d9bf0 !important;
-    }
-    #assets .assets-options .tfun-btn img {
-      margin-right: 9px;
-      filter: grayscale(0.5);
-    }
-    /* More tab ke normal options */
-    #more .more-options .tfun-btn {
-      background: #fff !important;
-      color: #222 !important;
-      font-weight: 400 !important;
-      justify-content: flex-start !important;
-      box-shadow: none !important;
-      border: 1.2px solid #e0e3e6 !important;
-      width: 100% !important;
-      transition: background 0.15s, color 0.15s;
-    }
-    #more .more-options .tfun-btn:hover, 
-    #more .more-options .tfun-btn:focus {
-      background: #f7fafd !important;
-      color: #1d9bf0 !important;
-    }
-    #more .more-options .tfun-btn img {
-      margin-right: 9px;
-      filter: grayscale(0.5);
-    }
-    /* 3D K nehe style */
-    .k3d {
-      margin: 14px auto 0 auto;
-      font-size: 1.4em;
-      font-weight: bold;
-      color: #1d9bf0;
-      text-shadow:
-        1px 1px 0 #fff,
-        2px 2px 0 #188ad6,
-        3px 3px 4px #23293c66;
-      letter-spacing: 1.5px;
-      transform: perspective(60px) rotateX(8deg);
-      display: inline-block;
-    }
-    /* Footer style */
-    .ind-footer {
-      width: 100vw;
-      background: #f7fafd;
-      color: #188ad6;
-      text-align: center;
-      font-size: 15px;
-      padding: 16px 0 18px 0;
-      font-weight: 500;
-      position: fixed;
-      left: 0;
-      bottom: 0;
-      z-index: 999;
-      letter-spacing: 0.3px;
-      box-shadow: 0 -2px 10px #1d9bf011;
-      pointer-events: none;
-      user-select: none;
-    }
-    .footer-logo {
-      width: 24px;
-      height: 24px;
-      vertical-align: middle;
-      border-radius: 50%;
-      margin-left: 7px;
-      box-shadow: 0 1px 5px #23293c22;
-      border: 1.5px solid #e0e3e6;
-      background: #fff;
-    }
-    .tab-bar {
-      margin-bottom: 50px; /* footer के लिए जगह */
+    .ind-footer {width:100vw;background:#f7fafd;color:#188ad6;text-align:center;font-size:15px;padding:16px 0 18px 0;font-weight:500;position:fixed;left:0;bottom:0;z-index:999;letter-spacing:0.3px;box-shadow:0 -2px 10px #1d9bf011;pointer-events:none;user-select:none;}
+    .footer-logo {width:24px;height:24px;vertical-align:middle;border-radius:50%;margin-left:7px;box-shadow:0 1px 5px #23293c22;border:1.5px solid #e0e3e6;background:#fff;}
+    .tab-bar {margin-bottom:50px;}
+    .tab-bar .tab-button img {
+      filter: grayscale(0) brightness(1) sepia(1) hue-rotate(-30deg) saturate(5) brightness(1.2);
     }
   </style>
 </head>
@@ -141,6 +83,9 @@
 <!-- Home Tab Content -->
 <div id="home" class="tab-content" style="display:none;">
   <div class="centered">
+    <div class="balance-card usdt" id="usdt-balance-card">
+      Balance: <strong><span id="usdt-balance">0.00</span> USDT</strong>
+    </div>
     <div class="balance-card" id="balance-card">Balance: <strong>0.000000 IND.COIN</strong></div>
     <div class="fan-image"></div>
     <div style="font-size:16px;margin-bottom:5px;color:#1d9bf0;">
@@ -150,7 +95,7 @@
       Hashrate: <span id="hashrate-display">2</span> GH/s ⚡
     </div>
     <div class="button-row">
-      <button class="tfun-btn" onclick="claimCoins()">
+      <button class="tfun-btn" id="claimBtn" onclick="claimCoins()">
         <img src="https://img.icons8.com/ios-filled/50/stack-of-coins.png" width="20" /> Claim
       </button>
       <button class="tfun-btn" onclick="boostHashrate()">
@@ -174,8 +119,6 @@
     <div style="margin-top:25px;color:#1d9bf0;font-size:12px;">
       Your user ID: <span id="userId"></span>
     </div>
-  
-    <div class="k3d"></div>
   </div>
 </div>
 <!-- Assets Tab Content -->
@@ -187,12 +130,10 @@
     <div class="balance-card" id="wallet-balance-card">
       Assets Balance: <strong>0.000000 IND.COIN</strong>
     </div>
-    <!-- Exchange Button -->
     <button class="tfun-btn exchange-btn" id="exchangeMainBtn" onclick="toggleExchangeMenu()">
       <img src="https://img.icons8.com/ios-filled/30/1d9bf0/currency-exchange.png" width="26" alt="Exchange Icon"/>
       Exchange 💱
     </button>
-    <!-- Exchange Choices [Hidden by default] -->
     <div class="exchange-row" id="exchangeOptions" style="display:none;">
       <button class="tfun-btn" onclick="alert('USDT to IND.COIN conversion coming soon!')">
         <img src="https://img.icons8.com/ios-filled/50/1d9bf0/us-dollar-circled--v1.png" width="22" />
@@ -203,8 +144,7 @@
         IND.COIN <span style="margin:0 8px;">⇄</span> USDT
       </button>
     </div>
-    <!-- Normal looking options below -->
-    <div class="assets-options" style="display:flex;flex-direction:column;gap:14px;margin:22px 0;">
+    <div class="assets-options">
       <button class="tfun-btn" onclick="alert('Deposit Coming Soon!')">
         <img src="https://img.icons8.com/ios-filled/50/1d9bf0/download-2.png" width="18" /> Deposit
       </button>
@@ -287,35 +227,35 @@
     <img src="https://img.icons8.com/ios-filled/50/1d9bf0/user-male-circle.png" style="vertical-align:middle;width:28px;height:28px;"/> MY Profile
   </h2>
   <form id="profileForm">
-    <label>राष्ट्रीयता</label>
-    <input type="text" name="nationality" placeholder="राष्ट्रीयता" required>
-    <label>वॉलेट</label>
+    <label>Nationality</label>
+    <input type="text" name="nationality" placeholder="Nationality" required>
+    <label>Wallet</label>
     <input type="text" name="wallet" placeholder="Wallet address" required>
-    <label>नाम</label>
-    <input type="text" name="username" placeholder="नाम" required>
-    <label>मोबाइल</label>
-    <input type="tel" name="mobile" placeholder="मोबाइल नंबर" required>
-    <label>ईमेल</label>
-    <input type="email" name="email" placeholder="ईमेल" required>
-    <label>लिंग</label>
+    <label>Name</label>
+    <input type="text" name="username" placeholder="Name" required>
+    <label>Mobile</label>
+    <input type="tel" name="mobile" placeholder="Mobile number" required>
+    <label>Email</label>
+    <input type="email" name="email" placeholder="Email" required>
+    <label>Gender</label>
     <select name="gender" required>
-      <option value="">चयन करें</option>
-      <option value="Male">पुरुष</option>
-      <option value="Female">महिला</option>
-      <option value="Other">अन्य</option>
+      <option value="">Select</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+      <option value="Other">Other</option>
     </select>
-    <label>जन्मतिथि</label>
+    <label>Birthday</label>
     <input type="date" name="birthday" required>
     <button type="submit" class="tfun-save-btn" id="saveBtnForm">
-      <img src="https://img.icons8.com/ios-filled/24/ffffff/save--v1.png" alt="Save">
+      <img src="https://img.icons8.com/ios-filled/24/1d9bf0/save--v1.png" alt="Save">
       <span>Save</span>
     </button>
   </form>
   <div id="detailsBar" style="background:#e8f3fc;padding:10px 14px;border-radius:8px;margin:18px 0 0 0;text-align:left;font-size:14px;color:#188ad6;">
-    <b>आपकी जानकारी:</b>
+    <b>Your Information:</b>
     <div id="profileDetails"></div>
   </div>
-  <div id="profileSavedMsg">Profile saved!</div>
+  <div id="profileSavedMsg" style="color:#1d9bf0;text-align:center;margin-top:12px;font-size:15px;font-weight:600;display:none;">Profile saved!</div>
 </div>
 <!-- Tab Bar -->
 <div class="tab-bar" style="display:none;">
@@ -342,28 +282,33 @@
 </div>
 <!-- Footer -->
 <div class="ind-footer">
-  © Powered by <b>IND.coin</b> 
+  © Powered by <b>IND.coin</b>
   <img src="https://i.ibb.co/xqLwJ8bd/IMG-20250518-124828-459.webp" class="footer-logo" alt="IND.COIN Logo">
 </div>
 <script>
-function toggleExchangeMenu() {
-  var div = document.getElementById('exchangeOptions');
-  if(div.style.display === 'none') div.style.display = 'flex';
-  else div.style.display = 'none';
-}
 let userId = localStorage.getItem("userId");
 if (!userId) { userId = Math.floor(Math.random() * 1e10).toString(); localStorage.setItem("userId", userId); }
 let walletBalance = parseFloat(localStorage.getItem("walletBalance")) || 0;
 let miningBalance = parseFloat(localStorage.getItem("miningBalance")) || 0;
+let usdtBalance = parseFloat(localStorage.getItem("usdtBalance")) || 0;
 let hashrate = 2;
 const miningRate = 0.00000009110;
+
+function updateClaimButton() {
+  const claimBtn = document.getElementById("claimBtn");
+  if (claimBtn) {
+    claimBtn.disabled = miningBalance <= 0;
+  }
+}
 function updateMiningDisplay() {
   if(document.getElementById('balance-card')) document.getElementById('balance-card').innerHTML = `Balance: <strong>${walletBalance.toFixed(6)} IND.COIN</strong>`;
+  if(document.getElementById('usdt-balance')) document.getElementById('usdt-balance').innerText = usdtBalance.toFixed(2);
   if(document.getElementById('live-balance')) document.getElementById('live-balance').innerText = `${miningBalance.toFixed(9)} IND.coin`;
   if(document.getElementById('hashrate-display')) document.getElementById('hashrate-display').innerText = hashrate;
   if(document.getElementById("userId")) document.getElementById("userId").innerText = userId;
   if(document.getElementById("userId2")) document.getElementById("userId2").innerText = userId;
   if(document.getElementById('wallet-balance-card')) document.getElementById('wallet-balance-card').innerHTML = `Assets Balance: <strong>${walletBalance.toFixed(6)} IND.COIN</strong>`;
+  updateClaimButton();
 }
 function mineCoins(elapsedSeconds) {
   miningBalance += elapsedSeconds * hashrate * miningRate;
@@ -401,6 +346,13 @@ function showTab(tabId) {
 function claimCoins() {
   if (miningBalance > 0) {
     walletBalance += miningBalance;
+    // Optional: Convert every 100000 IND.COIN to 1 USDT as a demo
+    let addedUSDT = Math.floor(walletBalance / 100000);
+    if (addedUSDT > 0) {
+      usdtBalance += addedUSDT;
+      walletBalance -= addedUSDT * 100000;
+      localStorage.setItem("usdtBalance", usdtBalance.toString());
+    }
     miningBalance = 0;
     localStorage.setItem("walletBalance", walletBalance.toString());
     localStorage.setItem("miningBalance", miningBalance.toString());
@@ -423,85 +375,6 @@ function giveSocialBonus(platform, e) {
     alert(`1000 IND.COIN bonus for following on ${platform.charAt(0).toUpperCase() + platform.slice(1)}!`);
   }
 }
-function showProfileDetails(profile) {
-  let d = '';
-  if (profile && Object.keys(profile).length > 0) {
-    if (profile.nationality && profile.nationality.trim() !== '') d += `राष्ट्रीयता: <b>${profile.nationality}</b><br>`;
-    if (profile.wallet && profile.wallet.trim() !== '') d += `वॉलेट: <b>${profile.wallet}</b><br>`;
-    if (profile.username && profile.username.trim() !== '') d += `नाम: <b>${profile.username}</b><br>`;
-    if (profile.mobile && profile.mobile.trim() !== '') d += `मोबाइल: <b>${profile.mobile}</b><br>`;
-    if (profile.email && profile.email.trim() !== '') d += `ईमेल: <b>${profile.email}</b><br>`;
-    if (profile.gender && profile.gender.trim() !== '') d += `लिंग: <b>${profile.gender}</b><br>`;
-    if (profile.birthday && profile.birthday.trim() !== '') d += `जन्मतिथि: <b>${profile.birthday}</b>`;
-    if (d === '') d = '<i>कोई जानकारी नहीं दी गई।</i>';
-  } else {
-    d = '<i>कोई जानकारी नहीं दी गई।</i>';
-  }
-  document.getElementById('profileDetails').innerHTML = d;
-}
-function lockProfileForm() {
-  const form = document.getElementById('profileForm');
-  Array.from(form.elements).forEach(el => { el.disabled = true; });
-  document.getElementById('saveBtnForm').disabled = true;
-}
-function unlockProfileForm() {
-  const form = document.getElementById('profileForm');
-  Array.from(form.elements).forEach(el => { el.disabled = false; });
-  document.getElementById('saveBtnForm').disabled = false;
-}
-function checkSaveCooldown() {
-  const lastSave = localStorage.getItem('profileLastSave');
-  if (lastSave) {
-    const now = Date.now();
-    const savedAt = parseInt(lastSave, 10);
-    const diff = now - savedAt;
-    if (diff < 1296000000) {
-      lockProfileForm();
-      return true;
-    }
-  }
-  unlockProfileForm();
-  return false;
-}
-function saveProfile() {
-  const form = document.getElementById('profileForm');
-  const data = {
-    nationality: form.nationality.value,
-    wallet: form.wallet.value,
-    username: form.username.value,
-    mobile: form.mobile.value,
-    email: form.email.value,
-    gender: form.gender.value,
-    birthday: form.birthday.value
-  };
-  localStorage.setItem("userProfile", JSON.stringify(data));
-  localStorage.setItem("profileLastSave", Date.now().toString());
-  showProfileDetails(data);
-  checkSaveCooldown();
-  document.getElementById('profileSavedMsg').style.display = 'block';
-  setTimeout(()=>{document.getElementById('profileSavedMsg').style.display='none'},2000);
-}
-document.getElementById('profileForm').onsubmit = function(e) {
-  e.preventDefault();
-  if (!checkSaveCooldown()) saveProfile();
-};
-function loadProfileForm() {
-  const profile = JSON.parse(localStorage.getItem("userProfile") || "{}");
-  const form = document.getElementById('profileForm');
-  if (!form) return;
-  form.nationality.value   = profile.nationality   || "";
-  form.wallet.value        = profile.wallet        || "";
-  form.username.value      = profile.username      || "";
-  form.mobile.value        = profile.mobile        || "";
-  form.email.value         = profile.email         || "";
-  form.gender.value        = profile.gender        || "";
-  form.birthday.value      = profile.birthday      || "";
-  showProfileDetails(profile);
-  checkSaveCooldown();
-}
-document.addEventListener('DOMContentLoaded', function() {
-  if(document.getElementById('profileForm')) loadProfileForm();
-});
 </script>
 </body>
 </html>
