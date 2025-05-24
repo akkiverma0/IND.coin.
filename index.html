@@ -419,4 +419,37 @@ function startAutoMining() {
 function startApp() {
   document.getElementById("splash-screen").style.display = "none";
   document.querySelectorAll(".tab-content").forEach(tab => tab.style.display = "none");
-  document.getElementById("hom
+  document.getElementById("home").style.display = "block";
+  document.querySelector(".tab-bar").style.display = "flex";
+  updateMiningDisplay();
+  startAutoMining();
+}
+document.getElementById("startGameBtn").onclick = startApp;
+function showTab(tabId) {
+  document.querySelectorAll(".tab-content").forEach(tab => tab.style.display = "none");
+  document.getElementById(tabId).style.display = "block";
+  document.querySelectorAll(".tab-button").forEach(btn => btn.classList.remove("active"));
+  const clickedButton = document.getElementById('btn-' + tabId);
+  if (clickedButton) clickedButton.classList.add("active");
+  updateMiningDisplay();
+}
+function claimCoins() {
+  if (miningBalance > 0) {
+    walletBalance += miningBalance;
+    miningBalance = 0;
+    localStorage.setItem("walletBalance", walletBalance.toString());
+    localStorage.setItem("miningBalance", miningBalance.toString());
+    updateMiningDisplay();
+    alert("Successfully Claimed!");
+  } else {
+    alert("No IND.COIN available to claim.");
+  }
+}
+function boostHashrate() {
+  alert("Boost feature coming soon!");
+}
+if(document.getElementById("userId")) document.getElementById("userId").innerText = userId;
+if(document.getElementById("userId2")) document.getElementById("userId2").innerText = userId;
+</script>
+</body>
+</html>
