@@ -150,6 +150,16 @@
     .more-item { display: flex; justify-content: space-between; align-items: center; background: linear-gradient(135deg, #20243b 70%, #232b40 100%); padding: 14px 18px; border-radius: 14px; margin: 18px 0; font-size: 17px; color: #fff; cursor: pointer; box-shadow: 0 2px 10px #00eaff44; transition: background 0.3s, box-shadow 0.2s, transform 0.2s;}
     .more-item:hover { background: #232a46; box-shadow: 0 8px 24px #00fff033; transform: scale(1.03) translateY(-2px) rotateY(4deg);}
     h1, h2, h3 { filter: drop-shadow(0 3px 8px #00fff066); letter-spacing: 1px;}
+    input.tonix-button, select.tonix-button {
+      font-size: 1em; font-weight: 400; padding: 9px 14px; border-radius: 11px; border: none; margin-top: 5px;
+      box-shadow: 0 2px 12px #00fff022, 0 1px 4px #fff9;
+      outline: none;
+    }
+    input.tonix-button:focus, select.tonix-button:focus {
+      border: 2px solid var(--main-grad1);
+      background: #232b4588;
+    }
+    label {font-size:15px;color:#00fff7;}
   </style>
 </head>
 <body>
@@ -204,38 +214,29 @@
   </div>
 </div>
 
-<!-- Friends Tab Content -->
-<div id="friends" class="tab-content" style="display:none;">
-  <div class="centered">
-    <h2>
-      <img src="https://img.icons8.com/ios-filled/50/ffffff/group.png" style="vertical-align:middle;width:32px;height:32px;"/> Friends
-    </h2>
-    <p>Invite and view your friends here.</p>
-    <div style="margin-top: 20px; background: #1a1a1a; padding: 15px; border-radius: 14px; box-shadow: 0 2px 10px #00eaff44;">
-      <h3>🪙 Level Income IND.COIN 🪙</h3>
-      <ul style="text-align: left;">
-        <li>1st Level Bonus: <strong>5000 IND.COIN</strong></li>
-        <li>2nd Level Bonus: <strong>2000 IND.COIN</strong></li>
-        <li>3rd Level Bonus: <strong>1000 IND.COIN</strong></li>
-      </ul>
-      <h3>🎁 Level Income Bonus 🎁</h3>
-      <ul style="text-align: left;">
-        <li>1st Level Income: <strong>30%</strong></li>
-        <li>2nd Level Income: <strong>25%</strong></li>
-        <li>3rd Level Income: <strong>10%</strong></li>
-      </ul>
-      <p style="color: gold; margin-top: 10px;">Notes ⛏️ next soon</p>
-    </div>
-  </div>
-</div>
-
 <!-- Assets Tab Content -->
 <div id="assets" class="tab-content" style="display:none;">
   <div class="centered">
     <h2>
       <img src="https://img.icons8.com/ios-filled/50/ffd700/coins--v1.png" style="vertical-align:middle;width:32px;height:32px;"/> Assets
     </h2>
-    <div class="balance-card" id="wallet-balance-card">Assets Balance: <strong>0.000000 IND.COIN</strong></div>
+    <div class="balance-card" id="wallet-balance-card">
+      Assets Balance: <strong>0.000000 IND.COIN</strong>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 18px; margin: 32px 0;">
+      <button class="tonix-button" style="justify-content:left;" onclick="alert('Deposit Coming Soon!')">
+        <img src="https://img.icons8.com/ios-filled/50/14ff00/download-2.png" width="24" style="margin-right:10px;" /> Deposit
+      </button>
+      <button class="tonix-button" style="justify-content:left;" onclick="alert('Withdrawal Coming Soon!')">
+        <img src="https://img.icons8.com/ios-filled/50/fa314a/upload.png" width="24" style="margin-right:10px;" /> Withdrawal
+      </button>
+      <button class="tonix-button" style="justify-content:left;" onclick="alert('Settings Coming Soon!')">
+        <img src="https://img.icons8.com/ios-filled/50/00d9ff/settings.png" width="24" style="margin-right:10px;" /> Setting
+      </button>
+      <button class="tonix-button" style="justify-content:left;" onclick="alert('History Coming Soon!')">
+        <img src="https://img.icons8.com/ios-filled/50/ffd700/activity-history.png" width="24" style="margin-right:10px;" /> History
+      </button>
+    </div>
     <p style="color: gold; font-size: 16px; margin-top: 20px;">Withdrawal program soon...</p>
   </div>
 </div>
@@ -257,7 +258,7 @@
   </div>
 </div>
 
-<!-- More Tab Content -->
+<!-- More Tab Content WITH FRIENDS SECTION -->
 <div id="more" class="tab-content centered" style="display:none;">
   <div style="background: #1b1f27; margin: 10px 20px; padding: 15px; border-radius: 14px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px #00eaff44;">
     <div style="text-align: left;">
@@ -266,6 +267,30 @@
     </div>
   </div>
   <div style="padding: 0 20px;">
+    <!-- Friends Content START -->
+    <div class="centered" style="margin-top:30px;">
+      <h2>
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/group.png" style="vertical-align:middle;width:32px;height:32px;"/> Friends
+      </h2>
+      <p>Invite and view your friends here.</p>
+      <div style="margin-top: 20px; background: #1a1a1a; padding: 15px; border-radius: 14px; box-shadow: 0 2px 10px #00eaff44;">
+        <h3>🪙 Level Income IND.COIN 🪙</h3>
+        <ul style="text-align: left;">
+          <li>1st Level Bonus: <strong>5000 IND.COIN</strong></li>
+          <li>2nd Level Bonus: <strong>2000 IND.COIN</strong></li>
+          <li>3rd Level Bonus: <strong>1000 IND.COIN</strong></li>
+        </ul>
+        <h3>🎁 Level Income Bonus 🎁</h3>
+        <ul style="text-align: left;">
+          <li>1st Level Income: <strong>30%</strong></li>
+          <li>2nd Level Income: <strong>25%</strong></li>
+          <li>3rd Level Income: <strong>10%</strong></li>
+        </ul>
+        <p style="color: gold; margin-top: 10px;">Notes ⛏️ next soon</p>
+      </div>
+    </div>
+    <!-- Friends Content END -->
+
     <div class="more-item">
       <span><img src="https://img.icons8.com/ios-filled/50/ffffff/id-verified.png" width="20" style="vertical-align:middle;"/> My ID</span>
       <span id="userId2">Loading...</span>
@@ -286,15 +311,55 @@
   </div>
 </div>
 
+<!-- MY Tab Content WITH PROFILE FORM -->
+<div id="mytab" class="tab-content centered" style="display:none;">
+  <h2>
+    <img src="https://img.icons8.com/ios-filled/50/00eaff/user-male-circle.png" style="vertical-align:middle;width:32px;height:32px;"/> MY Profile
+  </h2>
+  <form id="profileForm" style="max-width:400px;margin:0 auto;text-align:left;">
+    <div style="margin-bottom:15px;">
+      <label>Nationality</label>
+      <input type="text" name="nationality" class="tonix-button" style="width:100%;background:#232b45;color:#fff;" placeholder="Enter your nationality" required>
+    </div>
+    <div style="margin-bottom:15px;">
+      <label>Wallet Address</label>
+      <input type="text" name="wallet" class="tonix-button" style="width:100%;background:#232b45;color:#fff;" placeholder="Enter wallet address" required>
+    </div>
+    <div style="margin-bottom:15px;">
+      <label>User Name</label>
+      <input type="text" name="username" class="tonix-button" style="width:100%;background:#232b45;color:#fff;" placeholder="Your name" required>
+    </div>
+    <div style="margin-bottom:15px;">
+      <label>Mobile Number</label>
+      <input type="tel" name="mobile" class="tonix-button" style="width:100%;background:#232b45;color:#fff;" placeholder="Mobile number" required>
+    </div>
+    <div style="margin-bottom:15px;">
+      <label>Email</label>
+      <input type="email" name="email" class="tonix-button" style="width:100%;background:#232b45;color:#fff;" placeholder="Email address" required>
+    </div>
+    <div style="margin-bottom:15px;">
+      <label>Gender</label>
+      <select name="gender" class="tonix-button" style="width:100%;background:#232b45;color:#fff;" required>
+        <option value="">Select gender</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+    <div style="margin-bottom:15px;">
+      <label>Birthday</label>
+      <input type="date" name="birthday" class="tonix-button" style="width:100%;background:#232b45;color:#fff;" required>
+    </div>
+    <button type="submit" class="tonix-button" style="width:100%;margin-top:10px;">Save</button>
+  </form>
+  <div id="profileSavedMsg" style="color:var(--success);text-align:center;margin-top:12px;display:none;">Profile saved!</div>
+</div>
+
 <!-- Tab Bar -->
 <div class="tab-bar" style="display:none;">
   <button onclick="showTab('assets')" class="tab-button" id="btn-assets">
     <img src="https://img.icons8.com/ios-filled/50/ffd700/coins--v1.png" />
     Assets
-  </button>
-  <button onclick="showTab('friends')" class="tab-button" id="btn-friends">
-    <img src="https://img.icons8.com/ios-filled/50/ffffff/group.png" />
-    Friends
   </button>
   <button onclick="showTab('home')" class="tab-button active" id="btn-home">
     <img src="https://img.icons8.com/ios-filled/50/ffffff/home.png" />
@@ -308,11 +373,16 @@
     <img src="https://img.icons8.com/ios-filled/50/ffffff/settings-sliders.png" />
     More
   </button>
+  <!-- MY BUTTON (Rightmost) -->
+  <button onclick="showTab('mytab')" class="tab-button" id="btn-mytab">
+    <img src="https://img.icons8.com/ios-filled/50/00eaff/user-male-circle.png" />
+    MY
+  </button>
 </div>
 
 <script>
 // --- Bonus Amounts ---
-const LEVEL_BONUS = [5000, 2000, 1000]; // [Level 1, Level 2, Level 3]
+const LEVEL_BONUS = [5000, 2000, 1000];
 
 // Helper: Get Query Param by Name
 function getQueryParam(name) {
@@ -349,17 +419,13 @@ if (!userId) {
 if (isNewUser) {
   const ref = getQueryParam("ref");
   if (ref && ref !== userId) {
-    // Set this user's referrer for future level calculation
     setUserReferrer(userId, ref);
-
     let currRef = ref;
     for (let level = 0; level < LEVEL_BONUS.length; level++) {
       if (!currRef) break;
       let refBalance = getOtherWallet(currRef);
       refBalance += LEVEL_BONUS[level];
       setOtherWallet(currRef, refBalance);
-
-      // Move to next upline
       currRef = getUserReferrer(currRef);
     }
   }
@@ -385,13 +451,12 @@ function giveSocialBonus(platform, e) {
 
 // --- UPDATE DISPLAY FUNCTION (include referral wallet) ---
 function updateMiningDisplay() {
-  // Merge referrer wallet balance if login user is a referrer
   const walletKey = "walletBalance_" + userId;
   let referralWallet = parseFloat(localStorage.getItem(walletKey)) || 0;
   if (referralWallet > 0) {
     walletBalance += referralWallet;
     localStorage.setItem("walletBalance", walletBalance.toString());
-    localStorage.removeItem(walletKey); // So double add na ho
+    localStorage.removeItem(walletKey);
   }
   if(document.getElementById('balance-card')) document.getElementById('balance-card').innerHTML = `Balance: <strong>${walletBalance.toFixed(6)} IND.COIN</strong>`;
   if(document.getElementById('live-balance')) document.getElementById('live-balance').innerText = `${miningBalance.toFixed(9)} IND.coin`;
@@ -432,6 +497,7 @@ function showTab(tabId) {
   const clickedButton = document.getElementById('btn-' + tabId);
   if (clickedButton) clickedButton.classList.add("active");
   updateMiningDisplay();
+  if(tabId==="mytab") loadProfileForm();
 }
 function claimCoins() {
   if (miningBalance > 0) {
@@ -450,6 +516,40 @@ function boostHashrate() {
 }
 if(document.getElementById("userId")) document.getElementById("userId").innerText = userId;
 if(document.getElementById("userId2")) document.getElementById("userId2").innerText = userId;
+
+// --- Profile Form Logic for MY Tab ---
+function loadProfileForm() {
+  const profile = JSON.parse(localStorage.getItem("userProfile") || "{}");
+  const form = document.getElementById('profileForm');
+  if (!form) return;
+  form.nationality.value   = profile.nationality   || "";
+  form.wallet.value        = profile.wallet        || "";
+  form.username.value      = profile.username      || "";
+  form.mobile.value        = profile.mobile        || "";
+  form.email.value         = profile.email         || "";
+  form.gender.value        = profile.gender        || "";
+  form.birthday.value      = profile.birthday      || "";
+}
+document.addEventListener('DOMContentLoaded', function() {
+  if(document.getElementById('profileForm')) loadProfileForm();
+  if(document.getElementById('profileForm')) {
+    document.getElementById('profileForm').onsubmit = function(e) {
+      e.preventDefault();
+      const data = {
+        nationality: this.nationality.value,
+        wallet: this.wallet.value,
+        username: this.username.value,
+        mobile: this.mobile.value,
+        email: this.email.value,
+        gender: this.gender.value,
+        birthday: this.birthday.value
+      };
+      localStorage.setItem("userProfile", JSON.stringify(data));
+      document.getElementById('profileSavedMsg').style.display = 'block';
+      setTimeout(()=>{document.getElementById('profileSavedMsg').style.display='none'},2000);
+    };
+  }
+});
 </script>
 </body>
 </html>
