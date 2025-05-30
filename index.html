@@ -33,86 +33,30 @@
       background: #fff;
       box-shadow: 0 2px 22px #FFD70099, 0 3px 18px #FFA60055;
       animation: spin 0.5s linear infinite;
-      cursor: pointer;
     }
-    @keyframes spin {0%{transform:rotate(0);}100%{transform:rotate(360deg);}}
-    .centered {
-      max-width: 480px;
-      margin: 0 auto;
-      padding: 18px 18px 8px 18px;
-      text-align: center;
-      background: #fffde4;
-      border-radius: 14px;
-      box-shadow: 0 2px 18px #FFD70018;
-      margin-top: 18px;
+    .splash-welcome-text {
+      color: #fffbe6;
+      font-size: 2em; font-weight: bold; letter-spacing: 1px; line-height: 1.15; text-align: center; margin-bottom: 18px;
     }
-    .balance-card {
-      margin: 18px auto 12px;
-      padding: 13px 22px;
-      max-width: 310px;
-      font-size: 19px;
-      border-radius: 12px;
-      background: linear-gradient(90deg, #FFD700 65%, #FFA600 100%);
-      color: #7b5600;
-      font-weight: 700;
-      border: none;
-      box-shadow: 0 1px 8px #FFD70033;
-    }
-    .balance-card.usdt {
-      margin-top: 22px;
-      background: linear-gradient(90deg, #fffbe6 60%, #FFE066 100%);
-      color: #B07B00;
-    }
-    .fan-image {
-      width: 124px; height: 124px; margin: 18px auto 8px; border-radius: 50%;
-      background-image: url('https://i.ibb.co/xqLwJ8bd/IMG-20250518-124828-459.webp');
-      background-size: cover; background-position: center;
-      box-shadow: 0 4px 14px #FFD70099;
-      border: 3px solid #FFD700;
-      background-color: #fffbe6;
-      animation: spin 0.5s linear infinite;
-    }
-    .button-row {display:flex;justify-content:center;gap:13px;margin:20px 0 24px;}
-    .tfun-btn {
-      background: #fffbe6;
-      color: #B07B00;
-      font-size: 15px;
-      font-weight: 700;
-      padding: 11px 28px;
-      border: 1.8px solid #FFD700;
-      border-radius: 8px;
-      display: flex; align-items: center; gap: 7px;
-      cursor: pointer;
-      box-shadow: none;
-      outline: none;
-      transition: background 0.16s, color 0.16s, border-color 0.16s;
-    }
-    .tfun-btn:hover, .tfun-btn:focus {
+    .start-btn-3d {
       background: #FFD700;
+      border: none;
+      border-radius: 50%;
+      width: 84px;
+      height: 84px;
       color: #fff;
-      border-color: #FFA600;
+      font-size: 2rem;
+      display: flex; align-items: center; justify-content: center;
+      margin: 24px auto 0 auto;
+      box-shadow: 0 2px 12px #FFD70088;
+      cursor: pointer;
+      transition: background .18s, box-shadow .18s;
     }
-    .tfun-btn img {filter: grayscale(0) brightness(1) sepia(1) hue-rotate(-30deg) saturate(5) brightness(1.3);}
-    .social-icons {display:flex;justify-content:center;gap:9px;margin-top:16px;}
-    .social-icons img {width:32px;height:32px;border-radius:7px;cursor:pointer;border:2px solid #FFD700;background:#fff;box-shadow:0 1px 8px #FFD70022;transition:box-shadow 0.14s, border 0.14s;}
-    .social-icons img:hover {border:2px solid #FFA600;box-shadow:0 3px 14px #FFD70099;}
-    .ind-footer {
-      width:100vw;
-      background: linear-gradient(90deg, #FFD700 70%, #FFA600 100%);
-      color:#7b5600;
-      text-align:center;
-      font-size:15px;
-      padding:16px 0 18px 0;
-      font-weight:700;
-      position:fixed;
-      left:0;
-      bottom:0;
-      z-index:999;
-      letter-spacing:0.3px;
-      box-shadow:0 -2px 10px #FFD70022;
-      pointer-events:none;user-select:none;
+    .start-btn-3d:hover {
+      background: #FFA600;
+      box-shadow: 0 4px 18px #FFD70077;
     }
-    .footer-logo {width:24px;height:24px;vertical-align:middle;border-radius:50%;margin-left:7px;box-shadow:0 1px 5px #FFD70033;border:2px solid #fff;background:#fff;}
+    .start-icon-3d {width:48px;height:48px;}
     .tab-bar {
       display: flex;
       justify-content: space-around;
@@ -152,20 +96,120 @@
       box-sizing: border-box;
       background: linear-gradient(120deg, #FFFBE6 0%, #FFD70011 100%);
     }
-    /* Add more CSS as needed for your tabs etc */
+    .centered {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 18px 18px 8px 18px;
+      text-align: center;
+      background: #fffde4;
+      border-radius: 14px;
+      box-shadow: 0 2px 18px #FFD70018;
+      margin-top: 18px;
+    }
+    .balance-card {
+      margin: 18px auto 12px;
+      padding: 13px 22px;
+      max-width: 310px;
+      font-size: 19px;
+      border-radius: 12px;
+      background: linear-gradient(90deg, #FFD700 65%, #FFA600 100%);
+      color: #7b5600;
+      font-weight: 700;
+      border: none;
+      box-shadow: 0 1px 8px #FFD70033;
+    }
+    .balance-card.usdt {
+      margin-top: 22px;
+      background: linear-gradient(90deg, #fffbe6 60%, #FFE066 100%);
+      color: #B07B00;
+    }
+    .fan-image {
+      width: 124px; height: 124px; margin: 18px auto 8px; border-radius: 50%;
+      background-image: url('https://i.ibb.co/xqLwJ8bd/IMG-20250518-124828-459.webp');
+      background-size: cover; background-position: center;
+      box-shadow: 0 4px 14px #FFD70099;
+      border: 3px solid #FFD700;
+      background-color: #fffbe6;
+      animation: spin 0.5s linear infinite;
+    }
+    @keyframes spin {0%{transform:rotate(0);}100%{transform:rotate(360deg);}}
+    .button-row {display:flex;justify-content:center;gap:13px;margin:20px 0 24px;}
+    .tfun-btn {
+      background: #fffbe6;
+      color: #B07B00;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 11px 28px;
+      border: 1.8px solid #FFD700;
+      border-radius: 8px;
+      display: flex; align-items: center; gap: 7px;
+      cursor: pointer;
+      box-shadow: none;
+      outline: none;
+      transition: background 0.16s, color 0.16s, border-color 0.16s;
+    }
+    .tfun-btn:hover, .tfun-btn:focus {
+      background: #FFD700;
+      color: #fff;
+      border-color: #FFA600;
+    }
+    .tfun-btn img {filter: grayscale(0) brightness(1) sepia(1) hue-rotate(-30deg) saturate(5) brightness(1.3);}
+    .exchange-btn {font-weight:700;}
+    .exchange-row {display:flex;flex-direction:column;gap:12px;margin-top:12px;}
+    .assets-options {display:flex;flex-direction:column;gap:14px;margin:22px 0;}
+    .social-icons {display:flex;justify-content:center;gap:9px;margin-top:16px;}
+    .social-icons img {width:32px;height:32px;border-radius:7px;cursor:pointer;border:2px solid #FFD700;background:#fff;box-shadow:0 1px 8px #FFD70022;transition:box-shadow 0.14s, border 0.14s;}
+    .social-icons img:hover {border:2px solid #FFA600;box-shadow:0 3px 14px #FFD70099;}
+    #mytab form {display:flex;flex-direction:column;gap:10px;margin-top:7px;}
+    #mytab label {font-size:14px;font-weight:500;color:#B07B00;margin-bottom:2px;margin-top:6px;display:block;}
+    #mytab input, #mytab select {
+      width:100%;padding:12px 11px;border-radius:7px;
+      border:1.8px solid #FFD700;font-size:15px;background:#fffbe6;color:#7b5600;
+      outline:none;margin-bottom:0;font-weight:500;box-sizing:border-box;transition:border 0.16s;
+    }
+    #mytab input:focus, #mytab select:focus {border:2.3px solid #FFA600;background:#fff;}
+    .tfun-save-btn {
+      width:100%;display:flex;align-items:center;justify-content:center;gap:9px;
+      padding:13px 0 12px 0;border-radius:8px;
+      border:1.8px solid #FFD700;
+      font-size:16px;font-weight:700;background:#fffbe6;color:#B07B00;
+      box-shadow:none;letter-spacing:.2px;margin-top:10px;transition:background 0.18s, color 0.18s, border 0.18s;
+    }
+    .tfun-save-btn[disabled] {background:#FFE066 !important;color:#b2a45b !important;opacity:0.6;cursor:not-allowed;}
+    .tfun-save-btn:hover, .tfun-save-btn:focus {background:#FFD700;color:#fff;border-color:#FFA600;}
+    .tfun-save-btn img {margin:0;display:inline-block;filter: grayscale(0) brightness(1) sepia(1) hue-rotate(-30deg) saturate(5) brightness(1.2);}
+    #profileSavedMsg {color:#B07B00;text-align:center;margin-top:12px;font-size:15px;font-weight:600;display:none;}
+    .ind-footer {
+      width:100vw;
+      background: linear-gradient(90deg, #FFD700 70%, #FFA600 100%);
+      color:#7b5600;
+      text-align:center;
+      font-size:15px;
+      padding:16px 0 18px 0;
+      font-weight:700;
+      position:fixed;
+      left:0;
+      bottom:0;
+      z-index:999;
+      letter-spacing:0.3px;
+      box-shadow:0 -2px 10px #FFD70022;
+      pointer-events:none;user-select:none;
+    }
+    .footer-logo {width:24px;height:24px;vertical-align:middle;border-radius:50%;margin-left:7px;box-shadow:0 1px 5px #FFD70033;border:2px solid #fff;background:#fff;}
+    .tab-bar .tab-button img {
+      filter: grayscale(0) brightness(1.2) sepia(1) hue-rotate(-10deg) saturate(5) brightness(1.08);
+    }
   </style>
 </head>
 <body>
 <!-- Splash Screen -->
 <div id="splash-screen">
-  <img src="https://i.ibb.co/xqLwJ8bd/IMG-20250518-124828-459.webp"
-       alt="Welcome"
-       class="welcome-photo"
-       id="splashPhoto"
-       onclick="startApp()"/>
+  <img src="https://i.ibb.co/xqLwJ8bd/IMG-20250518-124828-459.webp" alt="Welcome" class="welcome-photo" />
   <h1 style="color:#FFD700;letter-spacing:1px;font-size:2.1em;">IND.COIN</h1>
+  <button class="start-btn-3d" id="startGameBtn" tabindex="0">
+    <img src="https://img.icons8.com/ios-filled/90/ffffff/play--v1.png" alt="Start" class="start-icon-3d"/>
+  </button>
 </div>
-
 <!-- Home Tab Content -->
 <div id="home" class="tab-content" style="display:none;">
   <div class="centered">
@@ -207,22 +251,170 @@
     </div>
   </div>
 </div>
-
+<!-- Assets Tab Content -->
+<div id="assets" class="tab-content" style="display:none;">
+  <div class="centered">
+    <h2 style="color:#B07B00;">
+      <img src="https://img.icons8.com/ios-filled/50/FFD700/coins--v1.png" style="vertical-align:middle;width:28px;height:28px;"/> Assets
+    </h2>
+    <div class="balance-card" id="wallet-balance-card">
+      Assets Balance: <strong>0.000000 IND.COIN</strong>
+    </div>
+    <button class="tfun-btn exchange-btn" id="exchangeMainBtn" onclick="toggleExchangeMenu()">
+      <img src="https://img.icons8.com/ios-filled/30/FFD700/currency-exchange.png" width="26" alt="Exchange Icon"/>
+      Exchange 💱
+    </button>
+    <div class="exchange-row" id="exchangeOptions" style="display:none;">
+      <button class="tfun-btn" id="usdt2indBtn">
+        <img src="https://img.icons8.com/ios-filled/50/FFD700/us-dollar-circled--v1.png" width="22" />
+        USDT <span style="margin:0 8px;">⇄</span> IND.COIN
+      </button>
+      <button class="tfun-btn" id="ind2usdtBtn">
+        <img src="https://img.icons8.com/ios-filled/50/FFD700/coins.png" width="22" />
+        IND.COIN <span style="margin:0 8px;">⇄</span> USDT
+      </button>
+    </div>
+    <div class="assets-options">
+      <button class="tfun-btn" onclick="alert('Deposit Coming Soon!')">
+        <img src="https://img.icons8.com/ios-filled/50/FFD700/download-2.png" width="18" /> Deposit
+      </button>
+      <button class="tfun-btn" onclick="alert('Withdrawal Coming Soon!')">
+        <img src="https://img.icons8.com/ios-filled/50/fa314a/upload.png" width="18" /> Withdrawal
+      </button>
+      <button class="tfun-btn" onclick="alert('Settings Coming Soon!')">
+        <img src="https://img.icons8.com/ios-filled/50/FFD700/settings.png" width="18" /> Setting
+      </button>
+      <button class="tfun-btn" onclick="alert('History Coming Soon!')">
+        <img src="https://img.icons8.com/ios-filled/50/FFD700/activity-history.png" width="18" /> History
+      </button>
+    </div>
+    <p style="color:#B07B00;font-size:13px;margin-top:20px;">Withdrawal program soon...</p>
+  </div>
+</div>
+<!-- Stake Tab Content -->
+<div id="stake" class="tab-content" style="display:none;">
+  <div class="centered">
+    <h2 style="color:#B07B00;">
+      <img src="https://img.icons8.com/ios-filled/50/FFD700/bank-cards.png" style="vertical-align:middle;width:28px;height:28px;"/> Stake
+    </h2>
+    <p style="font-size:15px;color:#B07B00;">Stake your IND.COIN and earn rewards!</p>
+    <button class="tfun-btn" onclick="alert('Staking coming soon!')" style="margin-top:10px;">
+      <img src="https://img.icons8.com/ios-filled/50/FFD700/stack-of-coins.png" width="18" /> Stake Now
+    </button>
+    <div style="margin-top:15px;color:#B07B00;">
+      <strong>Staking feature coming soon.<br>Stay tuned!</strong>
+    </div>
+  </div>
+</div>
+<!-- More Tab Content -->
+<div id="more" class="tab-content centered" style="display:none;">
+  <div style="background:#FFFBE6;margin:4px 0 14px 0;padding:14px;border-radius:10px;">
+    <div style="color:#B07B00;font-weight:bold;font-size:17px;">Welcome to IND Coin</div>
+  </div>
+  <div style="padding:0;">
+    <div class="centered" style="margin-top:12px;background:#FFFBE6;box-shadow:none;">
+      <h2 style="font-size:19px;color:#B07B00;">
+        <img src="https://img.icons8.com/ios-filled/50/FFD700/group.png" style="vertical-align:middle;width:26px;height:26px;"/> Friends
+      </h2>
+      <p style="font-size:13px;">Invite and view your friends here.</p>
+      <div style="margin-top:16px;background:#fff;padding:13px;border-radius:12px;box-shadow:0 1px 8px #FFD70022;">
+        <h3 style="font-size:15px;color:#B07B00;">🪙 Level Income IND.COIN 🪙</h3>
+        <ul style="text-align:left;font-size:13px;">
+          <li>1st Level Bonus: <strong>5000 IND.COIN</strong></li>
+          <li>2nd Level Bonus: <strong>2000 IND.COIN</strong></li>
+          <li>3rd Level Bonus: <strong>1000 IND.COIN</strong></li>
+        </ul>
+        <h3 style="font-size:15px;color:#B07B00;">🎁 Level Income Bonus 🎁</h3>
+        <ul style="text-align:left;font-size:13px;">
+          <li>1st Level Income: <strong>30%</strong></li>
+          <li>2nd Level Income: <strong>25%</strong></li>
+          <li>3rd Level Income: <strong>10%</strong></li>
+        </ul>
+        <p style="color:#B07B00;margin-top:7px;font-size:12px;">Notes ⛏️ next soon</p>
+      </div>
+    </div>
+    <div class="more-options" style="padding:0 2px;display:flex;flex-direction:column;gap:14px;margin-top:16px;">
+      <button class="tfun-btn" onclick="alert('Your ID copied!')">
+        <img src="https://img.icons8.com/ios-filled/50/FFD700/id-verified.png" width="18" style="vertical-align:middle;"/> My ID
+        <span id="userId2" style="font-weight:600;margin-left:auto;">Loading...</span>
+      </button>
+      <button class="tfun-btn" onclick="alert('Language change coming soon!')">
+        <img src="https://img.icons8.com/ios-filled/50/FFD700/language.png" width="18" style="vertical-align:middle;"/> Language
+        <span style="margin-left:auto;"><img src="https://flagcdn.com/us.svg" width="16" style="vertical-align:middle;"/> English</span>
+      </button>
+      <button class="tfun-btn" onclick="alert('Contacting support...')">
+        <img src="https://img.icons8.com/ios-filled/50/FFD700/help.png" width="18" style="vertical-align:middle;"/> Contact Support
+      </button>
+      <button class="tfun-btn" onclick="alert('Legal page will open.')">
+        <img src="https://img.icons8.com/ios-filled/50/FFD700/legal.png" width="18" style="vertical-align:middle;"/> Legal Information
+      </button>
+    </div>
+  </div>
+</div>
+<!-- MY Tab Content (PROFILE) -->
+<div id="mytab" class="tab-content centered" style="display:none;">
+  <h2 style="color:#B07B00;">
+    <img src="https://img.icons8.com/ios-filled/50/FFD700/user-male-circle.png" style="vertical-align:middle;width:28px;height:28px;"/> MY Profile
+  </h2>
+  <form id="profileForm">
+    <label>Nationality</label>
+    <input type="text" name="nationality" placeholder="Nationality" required>
+    <label>Wallet</label>
+    <input type="text" name="wallet" placeholder="Wallet address" required>
+    <label>Name</label>
+    <input type="text" name="username" placeholder="Name" required>
+    <label>Mobile</label>
+    <input type="tel" name="mobile" placeholder="Mobile number" required>
+    <label>Email</label>
+    <input type="email" name="email" placeholder="Email" required>
+    <label>Gender</label>
+    <select name="gender" required>
+      <option value="">Select</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+      <option value="Other">Other</option>
+    </select>
+    <label>Birthday</label>
+    <input type="date" name="birthday" required>
+    <button type="submit" class="tfun-save-btn" id="saveBtnForm">
+      <img src="https://img.icons8.com/ios-filled/24/FFD700/save--v1.png" alt="Save">
+      <span>Save</span>
+    </button>
+  </form>
+  <div id="detailsBar" style="background:#FFFBE6;padding:10px 14px;border-radius:8px;margin:18px 0 0 0;text-align:left;font-size:14px;color:#B07B00;">
+    <b>Your Information:</b>
+    <div id="profileDetails"></div>
+  </div>
+  <div id="profileSavedMsg" style="color:#B07B00;text-align:center;margin-top:12px;font-size:15px;font-weight:600;display:none;">Profile saved!</div>
+</div>
 <!-- Tab Bar -->
 <div class="tab-bar" style="display:none;">
   <button onclick="showTab('home')" class="tab-button active" id="btn-home">
     <img src="https://img.icons8.com/ios-filled/50/FFD700/home.png" alt="Home" />
     <span>Home</span>
   </button>
-  <!-- Add more tab buttons as you like -->
+  <button onclick="showTab('assets')" class="tab-button" id="btn-assets">
+    <img src="https://img.icons8.com/ios-filled/50/FFD700/coins--v1.png" alt="Assets" />
+    <span>Assets</span>
+  </button>
+  <button onclick="showTab('stake')" class="tab-button" id="btn-stake">
+    <img src="https://img.icons8.com/ios-filled/50/FFD700/bank-cards.png" alt="Stake" />
+    <span>Stake</span>
+  </button>
+  <button onclick="showTab('more')" class="tab-button" id="btn-more">
+    <img src="https://img.icons8.com/ios-filled/50/FFD700/settings-sliders.png" alt="More" />
+    <span>More</span>
+  </button>
+  <button onclick="showTab('mytab')" class="tab-button" id="btn-mytab">
+    <img src="https://img.icons8.com/ios-filled/50/FFD700/user-male-circle.png" alt="MY" />
+    <span>MY</span>
+  </button>
 </div>
-
 <!-- Footer -->
 <div class="ind-footer">
-  © Powered by <b>IND.coin</b>
+  © Powered by <b>IND.coin</b> 
   <img src="https://i.ibb.co/xqLwJ8bd/IMG-20250518-124828-459.webp" class="footer-logo" alt="IND.COIN Logo">
 </div>
-
 <script>
 let userId = localStorage.getItem("userId");
 if (!userId) { userId = Math.floor(Math.random() * 1e10).toString(); localStorage.setItem("userId", userId); }
@@ -245,6 +437,8 @@ function updateMiningDisplay() {
   if(document.getElementById('live-balance')) document.getElementById('live-balance').innerText = `${miningBalance.toFixed(9)} IND.coin`;
   if(document.getElementById('hashrate-display')) document.getElementById('hashrate-display').innerText = hashrate;
   if(document.getElementById("userId")) document.getElementById("userId").innerText = userId;
+  if(document.getElementById("userId2")) document.getElementById("userId2").innerText = userId;
+  if(document.getElementById('wallet-balance-card')) document.getElementById('wallet-balance-card').innerHTML = `Assets Balance: <strong>${walletBalance.toFixed(6)} IND.COIN</strong>`;
   updateClaimButton();
 }
 function mineCoins(elapsedSeconds) {
@@ -270,6 +464,7 @@ function startApp() {
   updateMiningDisplay();
   startAutoMining();
 }
+document.getElementById("startGameBtn").onclick = startApp;
 function showTab(tabId) {
   document.querySelectorAll(".tab-content").forEach(tab => tab.style.display = "none");
   document.getElementById(tabId).style.display = "block";
@@ -277,6 +472,7 @@ function showTab(tabId) {
   const clickedButton = document.getElementById('btn-' + tabId);
   if (clickedButton) clickedButton.classList.add("active");
   updateMiningDisplay();
+  if(tabId==="mytab") loadProfileForm && loadProfileForm();
 }
 function claimCoins() {
   if (miningBalance > 0) {
@@ -291,16 +487,16 @@ function claimCoins() {
     localStorage.setItem("walletBalance", walletBalance.toString());
     localStorage.setItem("miningBalance", miningBalance.toString());
     updateMiningDisplay();
-    alert("Successfully Claimed!");
+    alert("🎁congratulations🎁");
   } else {
     alert("No IND.COIN available to claim.");
   }
 }
-function boostHashrate() {
-  hashrate += 2;
+function boostHashrate(stop) {
+  hashrate += 0;
   localStorage.setItem("hashrate", hashrate.toString());
   updateMiningDisplay();
-  alert("Hashrate Boosted! Now: "+hashrate+" GH/s");
+  alert("soon update : "+hashrate+" ");
 }
 function giveSocialBonus(platform, e) {
   const bonusKey = `socialBonus_${platform}_${userId}`;
@@ -309,9 +505,142 @@ function giveSocialBonus(platform, e) {
     localStorage.setItem("walletBalance", walletBalance.toString());
     localStorage.setItem(bonusKey, "1");
     updateMiningDisplay();
-    alert(`1000 IND.COIN bonus for following on ${platform.charAt(0).toUpperCase() + platform.slice(1)}!`);
+    alert(`100 IND.COIN bonus for following on ${platform.charAt(0).toUpperCase() + platform.slice(1)}!`);
   }
 }
+
+// Exchange system
+function toggleExchangeMenu() {
+  const exchangeOptions = document.getElementById("exchangeOptions");
+  exchangeOptions.style.display = exchangeOptions.style.display === "none" ? "flex" : "none";
+}
+function createExchangeModal(type) {
+  let modal = document.createElement("div");
+  modal.id = "exchangeModal";
+  modal.style.position = "fixed";
+  modal.style.top = "0";
+  modal.style.left = "0";
+  modal.style.width = "100vw";
+  modal.style.height = "100vh";
+  modal.style.background = "rgba(0,0,0,0.35)";
+  modal.style.display = "flex";
+  modal.style.alignItems = "center";
+  modal.style.justifyContent = "center";
+  modal.style.zIndex = "9999";
+
+  let labelFrom = type === "usdt2ind" ? "USDT" : "IND.COIN";
+  let labelTo = type === "usdt2ind" ? "IND.COIN" : "USDT";
+  let balance = type === "usdt2ind" ? usdtBalance : walletBalance;
+  let rateStr = type === "usdt2ind"
+    ? `1 USDT = ${EXCHANGE_RATE} IND.COIN`
+    : `1 IND.COIN = ${(1/EXCHANGE_RATE).toFixed(8)} USDT`;
+
+  modal.innerHTML = `
+    <div style="background:#fffbe6;padding:28px 22px 22px 22px;min-width:320px;border-radius:14px;box-shadow:0 4px 24px #FFD70033;max-width:94vw;">
+      <h3 style="margin-top:0;color:#B07B00;font-size:1.2em;">Convert ${labelFrom} → ${labelTo}</h3>
+      <div style="margin-bottom:7px;font-size:14px;color:#B07B00;">Exchange Rate: <b>${rateStr}</b></div>
+      <div style="margin-bottom:7px;font-size:14px;color:#B07B00;">Your ${labelFrom} Balance: <b>${balance.toFixed(6)}</b></div>
+      <div style="display:flex;gap:6px;align-items:center;">
+        <input type="number" min="0" step="any" id="exchangeInput" placeholder="Enter amount" style="flex:1;padding:10px;border-radius:7px;border:1.8px solid #FFD700;font-size:15px;margin-bottom:12px;background:#fff;color:#B07B00;">
+        <button id="maxBtn" style="background:#FFD700;color:#fff;font-size:13px;border:none;border-radius:6px;padding:8px 15px;cursor:pointer;margin-bottom:12px;">MAX</button>
+      </div>
+      <div id="exchangeResult" style="color:#B07B00;font-size:14px;margin-bottom:12px;"></div>
+      <button id="confirmExchangeBtn" style="background:#FFD700;color:#fff;padding:10px 22px;border-radius:8px;border:none;font-size:15px;font-weight:700;margin-right:7px;cursor:pointer;">
+        Convert
+      </button>
+      <button onclick="document.body.removeChild(document.getElementById('exchangeModal'))" style="background:#FFE066;color:#B07B00;padding:10px 22px;border-radius:8px;border:none;font-size:15px;font-weight:700;cursor:pointer;">
+        Cancel
+      </button>
+    </div>
+  `;
+  document.body.appendChild(modal);
+
+  // MAX button logic
+  document.getElementById("maxBtn").onclick = function() {
+    document.getElementById("exchangeInput").value = balance;
+    document.getElementById("exchangeInput").dispatchEvent(new Event('input'));
+  };
+
+  // Live calculation
+  document.getElementById("exchangeInput").oninput = function() {
+    let val = parseFloat(this.value) || 0;
+    let result;
+    if(type === "usdt2ind") {
+      result = val * EXCHANGE_RATE;
+      document.getElementById("exchangeResult").innerText = `${val} USDT → ${result} IND.COIN`;
+    } else {
+      result = val / EXCHANGE_RATE;
+      document.getElementById("exchangeResult").innerText = `${val} IND.COIN → ${result.toFixed(8)} USDT`;
+    }
+  };
+  // Confirm conversion
+  document.getElementById("confirmExchangeBtn").onclick = function() {
+    let amount = parseFloat(document.getElementById("exchangeInput").value) || 0;
+    if(amount <= 0) { alert("Enter a valid amount."); return; }
+    if(type === "usdt2ind") {
+      if(amount > usdtBalance) { alert("Insufficient USDT balance."); return; }
+      let indAmount = amount * EXCHANGE_RATE;
+      usdtBalance -= amount;
+      walletBalance += indAmount;
+      localStorage.setItem("usdtBalance", usdtBalance.toString());
+      localStorage.setItem("walletBalance", walletBalance.toString());
+      updateMiningDisplay();
+      alert(`Converted ${amount} USDT → ${indAmount} IND.COIN`);
+    } else {
+      if(amount > walletBalance) { alert("Insufficient IND.COIN balance."); return; }
+      let usdtAmount = amount / EXCHANGE_RATE;
+      walletBalance -= amount;
+      usdtBalance += usdtAmount;
+      localStorage.setItem("usdtBalance", usdtBalance.toString());
+      localStorage.setItem("walletBalance", walletBalance.toString());
+      updateMiningDisplay();
+      alert(`Converted ${amount} IND.COIN → ${usdtAmount.toFixed(8)} USDT`);
+    }
+    document.body.removeChild(document.getElementById('exchangeModal'));
+  };
+}
+
+// Activate exchange buttons
+document.addEventListener("DOMContentLoaded", function() {
+  document.getElementById("usdt2indBtn").onclick = function() {
+    createExchangeModal("usdt2ind");
+  };
+  document.getElementById("ind2usdtBtn").onclick = function() {
+    createExchangeModal("ind2usdt");
+  };
+});
+
+// Profile Save/Load logic
+function loadProfileForm() {
+  const profileForm = document.getElementById('profileForm');
+  const detailsBar = document.getElementById('profileDetails');
+  const saved = JSON.parse(localStorage.getItem("profileData")||"{}");
+  ["nationality","wallet","username","mobile","email","gender","birthday"].forEach(k=>{
+    if(profileForm[k]) profileForm[k].value = saved[k]||"";
+  });
+  updateProfileDisplay();
+}
+function updateProfileDisplay() {
+  const saved = JSON.parse(localStorage.getItem("profileData")||"{}");
+  let html = '';
+  Object.keys(saved).forEach(k=>{
+    html += `<b>${k.charAt(0).toUpperCase()+k.slice(1)}:</b> ${saved[k]}<br>`;
+  });
+  document.getElementById('profileDetails').innerHTML = html||"No profile data saved.";
+}
+document.getElementById('profileForm').onsubmit = function(e) {
+  e.preventDefault();
+  const data = {};
+  Array.from(this.elements).forEach(el=>{
+    if(el.name) data[el.name]=el.value;
+  });
+  localStorage.setItem("profileData", JSON.stringify(data));
+  document.getElementById('profileSavedMsg').style.display = "block";
+  setTimeout(()=>document.getElementById('profileSavedMsg').style.display="none",2000);
+  updateProfileDisplay();
+  return false;
+};
+
 </script>
 </body>
 </html>
