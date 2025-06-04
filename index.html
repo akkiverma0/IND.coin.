@@ -6,217 +6,120 @@
   <title>IND.COIN</title>
   <link rel="icon" href="https://i.ibb.co/xqLwJ8bd/IMG-20250518-124828-459.webp" type="image/png">
   <style>
-    html, body {
-      height: 100%;
-      min-height: 100vh;
-      width: 100vw;
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      overflow-x: hidden;
+    html, body {height:100%;min-height:100vh;width:100vw;margin:0;padding:0;box-sizing:border-box;overflow-x:hidden;
       background: linear-gradient(120deg, #FFD700 0%, #FFA600 100%);
     }
-    body {
-      font-family: 'Segoe UI', Arial, sans-serif;
-      color: #7b5600;
-      background: linear-gradient(120deg, #FFD700 0%, #FFA600 100%);
-      min-height: 100vh;
-    }
-    #splash-screen {
-      position: fixed;
-      top: 0; left: 0; width: 100vw; height: 100vh;
+    body {font-family: 'Segoe UI', Arial, sans-serif;color: #7b5600;min-height: 100vh;}
+    #authModal {display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:999999;
+      background:rgba(0,0,0,0.35);align-items:center;justify-content:center;}
+    #authModal .auth-box {background:#fffbe6;padding:22px 22px 18px 22px;min-width:320px;border-radius:14px;
+      box-shadow:0 4px 24px #FFD70033;width:350px;}
+    #authModal input, #authModal button {font-size:15px;}
+    #authModal input {margin:6px 0;}
+    #authModal button {margin-top:9px;}
+    #splash-screen {position: fixed;top: 0; left: 0; width: 100vw; height: 100vh;display: flex;
+      flex-direction: column; justify-content: center; align-items: center; z-index: 10000;
       background: linear-gradient(135deg, #FFD700 0%, #FFA600 100%);
-      display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 10000;
     }
-    .welcome-photo {
-      width: 108px; height: 108px; border-radius: 50%; margin-bottom: 22px; object-fit: cover;
-      background: #fff;
-      box-shadow: 0 2px 22px #FFD70099, 0 3px 18px #FFA60055;
-      animation: spin 0.5s linear infinite;
-    }
-    .splash-welcome-text {
-      color: #fffbe6;
-      font-size: 2em; font-weight: bold; letter-spacing: 1px; line-height: 1.15; text-align: center; margin-bottom: 18px;
-    }
-    .start-btn-3d {
-      background: #FFD700;
-      border: none;
-      border-radius: 50%;
-      width: 84px;
-      height: 84px;
-      color: #fff;
-      font-size: 2rem;
-      display: flex; align-items: center; justify-content: center;
-      margin: 24px auto 0 auto;
-      box-shadow: 0 2px 12px #FFD70088;
-      cursor: pointer;
-      transition: background .18s, box-shadow .18s;
-    }
-    .start-btn-3d:hover {
-      background: #FFA600;
-      box-shadow: 0 4px 18px #FFD70077;
-    }
-    .start-icon-3d {width:48px;height:48px;}
-    .tab-bar {
-      display: flex;
-      justify-content: space-around;
-      background: linear-gradient(90deg, #FFD700 60%, #FFA600 100%);
-      border-top: 2px solid #FFD700;
-      padding: 4px 0 2px 0;
-      position: fixed;
-      bottom: 0;
-      width: 100vw;
-      height: 60px;
-      z-index: 1000;
-      box-shadow: 0 -2px 12px #FFD70055;
-      margin-bottom: 0;
-    }
-    .tab-button {
-      background: none;
-      border: none;
-      border-radius: 8px;
-      color: #7b5600;
-      font-size: 13px;
-      display: flex; flex-direction: column; align-items: center;
-      padding: 3px 0 1px 0;
-      flex: 1;
-      transition: background 0.18s, color 0.18s;
-      height: 56px;
-      font-weight: 600;
-    }
-    .tab-button img {width: 26px; height: 26px; margin-bottom: 3px;}
-    .tab-button.active, .tab-button:focus {
-      background: #ffe68c;
-      color: #FFA600;
-    }
-    .tab-content {
-      min-height: calc(100vh - 60px);
-      padding: 0 0 90px 0;
-      margin: 0;
-      box-sizing: border-box;
-      background: linear-gradient(120deg, #FFFBE6 0%, #FFD70011 100%);
-    }
-    .centered {
-      max-width: 480px;
-      margin: 0 auto;
-      padding: 18px 18px 8px 18px;
-      text-align: center;
-      background: #fffde4;
-      border-radius: 14px;
-      box-shadow: 0 2px 18px #FFD70018;
-      margin-top: 18px;
-    }
-    .balance-card {
-      margin: 18px auto 12px;
-      padding: 13px 22px;
-      max-width: 310px;
-      font-size: 19px;
-      border-radius: 12px;
-      background: linear-gradient(90deg, #FFD700 65%, #FFA600 100%);
-      color: #7b5600;
-      font-weight: 700;
-      border: none;
-      box-shadow: 0 1px 8px #FFD70033;
-    }
-    .balance-card.usdt {
-      margin-top: 22px;
-      background: linear-gradient(90deg, #fffbe6 60%, #FFE066 100%);
-      color: #B07B00;
-    }
-    .fan-image {
-      width: 124px; height: 124px; margin: 18px auto 8px; border-radius: 50%;
-      background-image: url('https://i.ibb.co/xqLwJ8bd/IMG-20250518-124828-459.webp');
-      background-size: cover; background-position: center;
-      box-shadow: 0 4px 14px #FFD70099;
-      border: 3px solid #FFD700;
-      background-color: #fffbe6;
-      animation: spin 0.5s linear infinite;
-    }
+    .welcome-photo {width: 108px; height: 108px; border-radius: 50%; margin-bottom: 22px; object-fit: cover;
+      background: #fff;box-shadow: 0 2px 22px #FFD70099, 0 3px 18px #FFA60055;animation: spin 0.5s linear infinite;}
     @keyframes spin {0%{transform:rotate(0);}100%{transform:rotate(360deg);}}
+    .start-btn-3d {background: #FFD700;border: none;border-radius: 50%;width: 84px;height: 84px;color: #fff;
+      font-size: 2rem;display: flex; align-items: center; justify-content: center;margin: 24px auto 0 auto;
+      box-shadow: 0 2px 12px #FFD70088;cursor: pointer;transition: background .18s, box-shadow .18s;}
+    .start-btn-3d:hover {background: #FFA600;box-shadow: 0 4px 18px #FFD70077;}
+    .start-icon-3d {width:48px;height:48px;}
+    .tab-bar {display: flex;justify-content: space-around;background: linear-gradient(90deg, #FFD700 60%, #FFA600 100%);
+      border-top: 2px solid #FFD700;padding: 4px 0 2px 0;position: fixed;bottom: 0;width: 100vw;height: 60px;z-index: 1000;
+      box-shadow: 0 -2px 12px #FFD70055;margin-bottom: 0;}
+    .tab-button {background: none;border: none;border-radius: 8px;color: #7b5600;font-size: 13px;display: flex;
+      flex-direction: column; align-items: center;padding: 3px 0 1px 0;flex: 1;transition: background 0.18s, color 0.18s;
+      height: 56px;font-weight: 600;}
+    .tab-button img {width: 26px; height: 26px; margin-bottom: 3px;}
+    .tab-button.active, .tab-button:focus {background: #ffe68c;color: #FFA600;}
+    .tab-content {min-height: calc(100vh - 60px);padding: 0 0 90px 0;margin: 0;box-sizing: border-box;
+      background: linear-gradient(120deg, #FFFBE6 0%, #FFD70011 100%);}
+    .centered {max-width: 480px;margin: 0 auto;padding: 18px 18px 8px 18px;text-align: center;background: #fffde4;
+      border-radius: 14px;box-shadow: 0 2px 18px #FFD70018;margin-top: 18px;}
+    .balance-card {margin: 18px auto 12px;padding: 13px 22px;max-width: 310px;font-size: 19px;border-radius: 12px;
+      background: linear-gradient(90deg, #FFD700 65%, #FFA600 100%);color: #7b5600;font-weight: 700;border: none;
+      box-shadow: 0 1px 8px #FFD70033;}
+    .balance-card.usdt {margin-top: 22px;background: linear-gradient(90deg, #fffbe6 60%, #FFE066 100%);color: #B07B00;}
+    .fan-image {width: 124px; height: 124px; margin: 18px auto 8px; border-radius: 50%;
+      background-image: url('https://i.ibb.co/xqLwJ8bd/IMG-20250518-124828-459.webp');background-size: cover;
+      background-position: center;box-shadow: 0 4px 14px #FFD70099;border: 3px solid #FFD700;background-color: #fffbe6;
+      animation: spin 0.5s linear infinite;}
     .button-row {display:flex;justify-content:center;gap:13px;margin:20px 0 24px;}
-    .tfun-btn {
-      background: #fffbe6;
-      color: #B07B00;
-      font-size: 15px;
-      font-weight: 700;
-      padding: 11px 28px;
-      border: 1.8px solid #FFD700;
-      border-radius: 8px;
-      display: flex; align-items: center; gap: 7px;
-      cursor: pointer;
-      box-shadow: none;
-      outline: none;
-      transition: background 0.16s, color 0.16s, border-color 0.16s;
-    }
-    .tfun-btn:hover, .tfun-btn:focus {
-      background: #FFD700;
-      color: #fff;
-      border-color: #FFA600;
-    }
+    .tfun-btn {background: #fffbe6;color: #B07B00;font-size: 15px;font-weight: 700;padding: 11px 28px;
+      border: 1.8px solid #FFD700;border-radius: 8px;display: flex; align-items: center; gap: 7px;cursor: pointer;
+      box-shadow: none;outline: none;transition: background 0.16s, color 0.16s, border-color 0.16s;}
+    .tfun-btn:hover, .tfun-btn:focus {background: #FFD700;color: #fff;border-color: #FFA600;}
     .tfun-btn img {filter: grayscale(0) brightness(1) sepia(1) hue-rotate(-30deg) saturate(5) brightness(1.3);}
     .exchange-btn {font-weight:700;}
     .exchange-row {display:flex;flex-direction:column;gap:12px;margin-top:12px;}
     .assets-options {display:flex;flex-direction:column;gap:14px;margin:22px 0;}
     .social-icons {display:flex;justify-content:center;gap:9px;margin-top:16px;}
-    .social-icons img {width:32px;height:32px;border-radius:7px;cursor:pointer;border:2px solid #FFD700;background:#fff;box-shadow:0 1px 8px #FFD70022;transition:box-shadow 0.14s, border 0.14s;}
+    .social-icons img {width:32px;height:32px;border-radius:7px;cursor:pointer;border:2px solid #FFD700;background:#fff;
+      box-shadow:0 1px 8px #FFD70022;transition:box-shadow 0.14s, border 0.14s;}
     .social-icons img:hover {border:2px solid #FFA600;box-shadow:0 3px 14px #FFD70099;}
     #mytab form {display:flex;flex-direction:column;gap:10px;margin-top:7px;}
     #mytab label {font-size:14px;font-weight:500;color:#B07B00;margin-bottom:2px;margin-top:6px;display:block;}
-    #mytab input, #mytab select {
-      width:100%;padding:12px 11px;border-radius:7px;
-      border:1.8px solid #FFD700;font-size:15px;background:#fffbe6;color:#7b5600;
-      outline:none;margin-bottom:0;font-weight:500;box-sizing:border-box;transition:border 0.16s;
-    }
+    #mytab input, #mytab select {width:100%;padding:12px 11px;border-radius:7px;border:1.8px solid #FFD700;
+      font-size:15px;background:#fffbe6;color:#7b5600;outline:none;margin-bottom:0;font-weight:500;box-sizing:border-box;
+      transition:border 0.16s;}
     #mytab input:focus, #mytab select:focus {border:2.3px solid #FFA600;background:#fff;}
-    .tfun-save-btn {
-      width:100%;display:flex;align-items:center;justify-content:center;gap:9px;
-      padding:13px 0 12px 0;border-radius:8px;
-      border:1.8px solid #FFD700;
-      font-size:16px;font-weight:700;background:#fffbe6;color:#B07B00;
-      box-shadow:none;letter-spacing:.2px;margin-top:10px;transition:background 0.18s, color 0.18s, border 0.18s;
-    }
+    .tfun-save-btn {width:100%;display:flex;align-items:center;justify-content:center;gap:9px;padding:13px 0 12px 0;
+      border-radius:8px;border:1.8px solid #FFD700;font-size:16px;font-weight:700;background:#fffbe6;color:#B07B00;
+      box-shadow:none;letter-spacing:.2px;margin-top:10px;transition:background 0.18s, color 0.18s, border 0.18s;}
     .tfun-save-btn[disabled] {background:#FFE066 !important;color:#b2a45b !important;opacity:0.6;cursor:not-allowed;}
     .tfun-save-btn:hover, .tfun-save-btn:focus {background:#FFD700;color:#fff;border-color:#FFA600;}
-    .tfun-save-btn img {margin:0;display:inline-block;filter: grayscale(0) brightness(1) sepia(1) hue-rotate(-30deg) saturate(5) brightness(1.2);}
+    .tfun-save-btn img {margin:0;display:inline-block;filter: grayscale(0) brightness(1) sepia(1) hue-rotate(-30deg)
+      saturate(5) brightness(1.2);}
     #profileSavedMsg {color:#B07B00;text-align:center;margin-top:12px;font-size:15px;font-weight:600;display:none;}
-    .ind-footer {
-      width:100vw;
-      background: linear-gradient(90deg, #FFD700 70%, #FFA600 100%);
-      color:#7b5600;
-      text-align:center;
-      font-size:15px;
-      padding:16px 0 18px 0;
-      font-weight:700;
-      position:fixed;
-      left:0;
-      bottom:0;
-      z-index:999;
-      letter-spacing:0.3px;
-      box-shadow:0 -2px 10px #FFD70022;
-      pointer-events:none;user-select:none;
-    }
-    .footer-logo {width:24px;height:24px;vertical-align:middle;border-radius:50%;margin-left:7px;box-shadow:0 1px 5px #FFD70033;border:2px solid #fff;background:#fff;}
-    .tab-bar .tab-button img {
-      filter: grayscale(0) brightness(1.2) sepia(1) hue-rotate(-10deg) saturate(5) brightness(1.08);
-    }
+    .ind-footer {width:100vw;background: linear-gradient(90deg, #FFD700 70%, #FFA600 100%);color:#7b5600;text-align:center;
+      font-size:15px;padding:16px 0 18px 0;font-weight:700;position:fixed;left:0;bottom:0;z-index:999;letter-spacing:0.3px;
+      box-shadow:0 -2px 10px #FFD70022;pointer-events:none;user-select:none;}
+    .footer-logo {width:24px;height:24px;vertical-align:middle;border-radius:50%;margin-left:7px;box-shadow:0 1px 5px #FFD70033;
+      border:2px solid #fff;background:#fff;}
   </style>
 </head>
 <body>
+<!-- Auth Modal (Sign Up / Login) -->
+<div id="authModal">
+  <div class="auth-box">
+    <h2 id="authTitle" style="color:#B07B00;">Sign Up</h2>
+    <form id="signupForm">
+      <input name="username" type="text" placeholder="Username" required style="width:100%;">
+      <input name="password" type="password" placeholder="Password" required style="width:100%;">
+      <input name="mobile" type="tel" placeholder="Mobile Number" required style="width:100%;">
+      <input name="email" type="email" placeholder="Email ID" required style="width:100%;">
+      <input name="otp" type="text" placeholder="Enter OTP" required style="width:100%;display:none;">
+      <input name="referral" type="text" placeholder="Referral Code (Optional)" style="width:100%;">
+      <button type="button" id="sendOtpBtn" style="background:#FFD700;color:#fff;padding:8px 0;width:100%;border:none;border-radius:7px;">Send OTP</button>
+      <button type="submit" style="background:#FFA600;color:#fff;padding:8px 0;width:100%;border:none;border-radius:7px;display:none;" id="signupSubmitBtn">Sign Up</button>
+    </form>
+    <div style="text-align:center;margin-top:7px;font-size:14px;">
+      <span id="switchAuth" style="color:#B07B00;cursor:pointer;">Already have an account? Login</span>
+    </div>
+  </div>
+</div>
+
 <!-- Splash Screen -->
 <div id="splash-screen">
   <img src="https://i.ibb.co/xqLwJ8bd/IMG-20250518-124828-459.webp" alt="Welcome" class="welcome-photo" />
   <h1 style="color:#FFD700;letter-spacing:1px;font-size:2.1em;">IND.COIN</h1>
   <button class="start-btn-3d" id="startGameBtn" tabindex="0">
-    <img src="https://img.icons8.com/ios-filled/90/ffffff/play--v1.png" alt="Start" class="start-icon-3d"/>
+    <img src="https://img.icons8.com/ios-filled/90/ffffff/image.png" alt="Photo" class="start-icon-3d"/>
   </button>
 </div>
-<!-- Home Tab Content -->
 <div id="home" class="tab-content" style="display:none;">
   <div class="centered">
     <div class="balance-card usdt" id="usdt-balance-card">
       Balance: <strong><span id="usdt-balance">0.00</span> USDT</strong>
     </div>
-    <div class="balance-card" id="balance-card">Balance: <strong>0.000000 IND.COIN</strong></div>
+    <div class="balance-card" id="balance-card">
+      Balance: <strong>0.000000 IND.COIN</strong>
+    </div>
     <div class="fan-image"></div>
     <div style="font-size:16px;margin-bottom:5px;color:#B07B00;">
       <span id="live-balance">0.000000000 IND.coin</span>
@@ -233,16 +136,16 @@
       </button>
     </div>
     <div class="social-icons">
-      <a href="https://t.me/Unique_IND_coin_bot" target="_blank" onclick="giveSocialBonus('telegram', event)">
+      <a href="#" onclick="giveSocialBonus('telegram', event)">
         <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram" />
       </a>
-      <a href="https://www.facebook.com/share/1Frxw91MUM/" target="_blank" onclick="giveSocialBonus('facebook', event)">
+      <a href="#" onclick="giveSocialBonus('facebook', event)">
         <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" />
       </a>
-      <a href="https://www.instagram.com/ind.coin.in" target="_blank" onclick="giveSocialBonus('instagram', event)">
+      <a href="#" onclick="giveSocialBonus('instagram', event)">
         <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" />
       </a>
-      <a href="https://www.threads.net/@ind.coin.in" target="_blank" onclick="giveSocialBonus('threads', event)">
+      <a href="#" onclick="giveSocialBonus('threads', event)">
         <img src="https://cdn-icons-png.flaticon.com/512/5968/5968885.png" alt="Threads" />
       </a>
     </div>
@@ -251,7 +154,6 @@
     </div>
   </div>
 </div>
-<!-- Assets Tab Content -->
 <div id="assets" class="tab-content" style="display:none;">
   <div class="centered">
     <h2 style="color:#B07B00;">
@@ -284,14 +186,13 @@
       <button class="tfun-btn" onclick="alert('Settings Coming Soon!')">
         <img src="https://img.icons8.com/ios-filled/50/FFD700/settings.png" width="18" /> Setting
       </button>
-      <button class="tfun-btn" onclick="alert('History Coming Soon!')">
+      <button class="tfun-btn" onclick="openHistoryModal()">
         <img src="https://img.icons8.com/ios-filled/50/FFD700/activity-history.png" width="18" /> History
       </button>
     </div>
     <p style="color:#B07B00;font-size:13px;margin-top:20px;">Withdrawal program soon...</p>
   </div>
 </div>
-<!-- Stake Tab Content -->
 <div id="stake" class="tab-content" style="display:none;">
   <div class="centered">
     <h2 style="color:#B07B00;">
@@ -306,7 +207,6 @@
     </div>
   </div>
 </div>
-<!-- More Tab Content -->
 <div id="more" class="tab-content centered" style="display:none;">
   <div style="background:#FFFBE6;margin:4px 0 14px 0;padding:14px;border-radius:10px;">
     <div style="color:#B07B00;font-weight:bold;font-size:17px;">Welcome to IND Coin</div>
@@ -338,11 +238,13 @@
         <img src="https://img.icons8.com/ios-filled/50/FFD700/id-verified.png" width="18" style="vertical-align:middle;"/> My ID
         <span id="userId2" style="font-weight:600;margin-left:auto;">Loading...</span>
       </button>
-      <button class="tfun-btn" onclick="alert('Language change coming soon!')">
+      <button class="tfun-btn" onclick="openLanguageModal()">
         <img src="https://img.icons8.com/ios-filled/50/FFD700/language.png" width="18" style="vertical-align:middle;"/> Language
-        <span style="margin-left:auto;"><img src="https://flagcdn.com/us.svg" width="16" style="vertical-align:middle;"/> English</span>
+        <span id="selectedLang" style="margin-left:auto;">
+          <img src="https://flagcdn.com/us.svg" width="16" style="vertical-align:middle;"/> English
+        </span>
       </button>
-      <button class="tfun-btn" onclick="alert('Contacting support...')">
+      <button class="tfun-btn" onclick="openAIChat()">
         <img src="https://img.icons8.com/ios-filled/50/FFD700/help.png" width="18" style="vertical-align:middle;"/> Contact Support
       </button>
       <button class="tfun-btn" onclick="alert('Legal page will open.')">
@@ -351,7 +253,6 @@
     </div>
   </div>
 </div>
-<!-- MY Tab Content (PROFILE) -->
 <div id="mytab" class="tab-content centered" style="display:none;">
   <h2 style="color:#B07B00;">
     <img src="https://img.icons8.com/ios-filled/50/FFD700/user-male-circle.png" style="vertical-align:middle;width:28px;height:28px;"/> MY Profile
@@ -410,26 +311,153 @@
     <span>MY</span>
   </button>
 </div>
-<!-- Footer -->
 <div class="ind-footer">
   © Powered by <b>IND.coin</b> 
   <img src="https://i.ibb.co/xqLwJ8bd/IMG-20250518-124828-459.webp" class="footer-logo" alt="IND.COIN Logo">
 </div>
+<!-- AI Chat Modal -->
+<div id="aiChatModal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.28);z-index:99999;align-items:center;justify-content:center;">
+  <div style="background:#fffbe6;max-width:93vw;width:370px;min-height:340px;border-radius:14px;box-shadow:0 4px 24px #FFD70033;padding:0 0 10px 0;display:flex;flex-direction:column;position:relative;">
+    <div style="background:#FFD700;padding:14px 0 12px 0;border-radius:14px 14px 0 0;text-align:center;color:#7b5600;font-weight:700;font-size:17px;">
+      👋 AI Support Chat – IND.COIN
+      <button onclick="closeAIChat()" style="position:absolute;right:12px;top:13px;background:none;border:none;font-size:17px;color:#B07B00;cursor:pointer;">✖</button>
+    </div>
+    <div id="aiChatMessages" style="flex:1;overflow-y:auto;padding:16px 14px 6px 14px;height:230px;font-size:15px;line-height:1.5;"></div>
+    <form id="aiChatForm" style="padding:0 10px 0 10px;display:flex;gap:6px;">
+      <input id="aiChatInput" type="text" placeholder="Type your question..." style="flex:1;padding:8px 9px;border-radius:7px;border:1.4px solid #FFD700;font-size:15px;background:#fff;color:#B07B00;">
+      <button type="submit" style="background:#FFD700;color:#fff;padding:8px 14px;border-radius:7px;border:none;font-size:15px;font-weight:600;cursor:pointer;">Send</button>
+    </form>
+  </div>
+</div>
+<!-- Language Modal -->
+<div id="languageModal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:99999;background:rgba(0,0,0,0.28);align-items:center;justify-content:center;">
+  <div style="background:#fffbe6;max-width:93vw;width:330px;border-radius:14px;box-shadow:0 4px 24px #FFD70033;padding:0 0 10px 0;display:flex;flex-direction:column;position:relative;">
+    <div style="background:#FFD700;padding:14px 0 12px 0;border-radius:14px 14px 0 0;text-align:center;color:#7b5600;font-weight:700;font-size:17px;">
+      🌐 Select Language
+      <button onclick="closeLanguageModal()" style="position:absolute;right:12px;top:13px;background:none;border:none;font-size:17px;color:#B07B00;cursor:pointer;">✖</button>
+    </div>
+    <div style="padding:18px 16px 0 16px;max-height:260px;overflow:auto;">
+      <div id="langList"></div>
+    </div>
+  </div>
+</div>
+<!-- History Modal -->
+<div id="historyModal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:99999;background:rgba(0,0,0,0.28);align-items:center;justify-content:center;">
+  <div style="background:#fffbe6;max-width:93vw;width:350px;border-radius:14px;box-shadow:0 4px 24px #FFD70033;padding:0 0 10px 0;display:flex;flex-direction:column;position:relative;">
+    <div style="background:#FFD700;padding:14px 0 12px 0;border-radius:14px 14px 0 0;text-align:center;color:#7b5600;font-weight:700;font-size:17px;">
+      🕒 Transaction History
+      <button onclick="closeHistoryModal()" style="position:absolute;right:12px;top:13px;background:none;border:none;font-size:17px;color:#B07B00;cursor:pointer;">✖</button>
+    </div>
+    <div id="historyList" style="padding:15px 14px 8px 14px;max-height:340px;overflow:auto;font-size:14px;"></div>
+  </div>
+</div>
 <script>
-let userId = localStorage.getItem("userId");
-if (!userId) { userId = Math.floor(Math.random() * 1e10).toString(); localStorage.setItem("userId", userId); }
+// ------------ AUTH SYSTEM -------------
+function showAuthModal() {
+  document.getElementById('authModal').style.display = 'flex';
+}
+function hideAuthModal() {
+  document.getElementById('authModal').style.display = 'none';
+}
+document.getElementById('switchAuth').onclick = function() {
+  let title = document.getElementById('authTitle');
+  let form = document.getElementById('signupForm');
+  if(title.innerText === "Sign Up") {
+    title.innerText = "Login";
+    form.innerHTML = `
+      <input name="username" type="text" placeholder="Username/Email/Mobile" required style="width:100%;">
+      <input name="password" type="password" placeholder="Password" required style="width:100%;">
+      <button type="submit" style="background:#FFD700;color:#fff;padding:8px 0;width:100%;border:none;border-radius:7px;">Login</button>
+    `;
+    this.innerText = "Don't have an account? Sign Up";
+  } else {
+    title.innerText = "Sign Up";
+    form.innerHTML = `
+      <input name="username" type="text" placeholder="Username" required style="width:100%;">
+      <input name="password" type="password" placeholder="Password" required style="width:100%;">
+      <input name="mobile" type="tel" placeholder="Mobile Number" required style="width:100%;">
+      <input name="email" type="email" placeholder="Email ID" required style="width:100%;">
+      <input name="otp" type="text" placeholder="Enter OTP" required style="width:100%;display:none;">
+      <input name="referral" type="text" placeholder="Referral Code (Optional)" style="width:100%;">
+      <button type="button" id="sendOtpBtn" style="background:#FFD700;color:#fff;padding:8px 0;width:100%;border:none;border-radius:7px;">Send OTP</button>
+      <button type="submit" style="background:#FFA600;color:#fff;padding:8px 0;width:100%;border:none;border-radius:7px;display:none;" id="signupSubmitBtn">Sign Up</button>
+    `;
+    this.innerText = "Already have an account? Login";
+  }
+};
+document.addEventListener('submit', function(e) {
+  if(e.target.id === "signupForm") {
+    e.preventDefault();
+    let title = document.getElementById('authTitle').innerText;
+    if(title === "Login") {
+      let uname = e.target.username.value;
+      let pwd = e.target.password.value;
+      let users = JSON.parse(localStorage.getItem("users")||"{}");
+      let user = Object.values(users).find(u => (u.username===uname || u.email===uname || u.mobile===uname) && u.password===pwd);
+      if(user) {
+        localStorage.setItem("isLoggedIn","1");
+        localStorage.setItem("userId", user.username);
+        hideAuthModal();
+        window.location.reload();
+      } else {
+        alert("Invalid credentials.");
+      }
+    } else {
+      let uname = e.target.username.value;
+      let pwd = e.target.password.value;
+      let mob = e.target.mobile.value;
+      let email = e.target.email.value;
+      let otp = e.target.otp.value;
+      let ref = e.target.referral.value;
+      if(!otp) { alert("Please click 'Send OTP' first."); return; }
+      let enteredOtp = localStorage.getItem("signup_otp");
+      if(otp !== enteredOtp) { alert("Invalid OTP."); return; }
+      let users = JSON.parse(localStorage.getItem("users")||"{}");
+      if(users[uname]) { alert("Username already exists."); return; }
+      users[uname] = {username:uname, password:pwd, mobile:mob, email:email, referral:ref};
+      localStorage.setItem("users", JSON.stringify(users));
+      localStorage.setItem("isLoggedIn","1");
+      localStorage.setItem("userId", uname);
+      hideAuthModal();
+      window.location.reload();
+    }
+  }
+});
+document.addEventListener('click', function(e) {
+  if(e.target.id === "sendOtpBtn") {
+    let form = document.getElementById('signupForm');
+    let email = form.email.value;
+    if(!email) { alert("Enter Email ID first."); return; }
+    localStorage.setItem("signup_otp", "1234");
+    form.otp.style.display = "block";
+    form.otp.required = true;
+    document.getElementById('signupSubmitBtn').style.display = "block";
+    alert("OTP sent to " + email + " (Demo OTP: 1234)");
+  }
+});
+window.onload = function() {
+  if(!localStorage.getItem("isLoggedIn")) {
+    showAuthModal();
+    document.getElementById('splash-screen').style.display = "none";
+    document.querySelector(".tab-bar").style.display = "none";
+    document.querySelectorAll(".tab-content").forEach(tab => tab.style.display = "none");
+  } else {
+    document.getElementById('authModal').style.display = "none";
+    document.getElementById('splash-screen').style.display = "flex";
+  }
+};
+// ------------ END AUTH SYSTEM -------------
+// ------------ GAME LOGIC -------------
+let userId = localStorage.getItem("userId") || Math.floor(Math.random() * 1e10).toString();
 let walletBalance = parseFloat(localStorage.getItem("walletBalance")) || 0;
 let miningBalance = parseFloat(localStorage.getItem("miningBalance")) || 0;
 let usdtBalance = parseFloat(localStorage.getItem("usdtBalance")) || 0;
 let hashrate = parseInt(localStorage.getItem("hashrate")) || 2;
 const miningRate = 0.00000009110;
-const EXCHANGE_RATE = 100000; // 1 USDT = 100,000 IND.COIN
-
+const EXCHANGE_RATE = 100000;
 function updateClaimButton() {
   const claimBtn = document.getElementById("claimBtn");
-  if (claimBtn) {
-    claimBtn.disabled = miningBalance <= 0;
-  }
+  if (claimBtn) {claimBtn.disabled = miningBalance <= 0;}
 }
 function updateMiningDisplay() {
   if(document.getElementById('balance-card')) document.getElementById('balance-card').innerHTML = `Balance: <strong>${walletBalance.toFixed(6)} IND.COIN</strong>`;
@@ -474,12 +502,45 @@ function showTab(tabId) {
   updateMiningDisplay();
   if(tabId==="mytab") loadProfileForm && loadProfileForm();
 }
+function addHistory(type, coin, amount, note) {
+  const history = JSON.parse(localStorage.getItem("history")||"[]");
+  history.unshift({
+    date: new Date().toLocaleString(),
+    type, coin, amount, note: note||""
+  });
+  localStorage.setItem("history", JSON.stringify(history));
+}
+function openHistoryModal() {
+  document.getElementById('historyModal').style.display = 'flex';
+  const history = JSON.parse(localStorage.getItem("history")||"[]");
+  let html = "";
+  if(history.length===0) {
+    html = "<div style='color:#B07B00;text-align:center;margin:30px 0;'>No history found.</div>";
+  } else {
+    html = "<table style='width:100%;border-collapse:collapse;'><tr style='font-weight:bold;background:#FFD70011;'><td>Date</td><td>Type</td><td>Coin</td><td>Amount</td></tr>";
+    history.forEach(h=>{
+      html += `<tr>
+        <td style="padding:4px 0;">${h.date}</td>
+        <td style="padding:4px 0;">${h.type}</td>
+        <td style="padding:4px 0;">${h.coin}</td>
+        <td style="padding:4px 0;">${h.amount}</td>
+      </tr>`;
+    });
+    html += "</table>";
+  }
+  document.getElementById('historyList').innerHTML = html;
+}
+function closeHistoryModal() {
+  document.getElementById('historyModal').style.display = 'none';
+}
 function claimCoins() {
   if (miningBalance > 0) {
     walletBalance += miningBalance;
+    addHistory('Claim', 'IND.COIN', miningBalance, 'Claimed mined coins');
     let addedUSDT = Math.floor(walletBalance / EXCHANGE_RATE);
     if (addedUSDT > 0) {
       usdtBalance += addedUSDT;
+      addHistory('Convert', 'USDT', addedUSDT, 'Auto convert IND.COIN to USDT');
       walletBalance -= addedUSDT * EXCHANGE_RATE;
       localStorage.setItem("usdtBalance", usdtBalance.toString());
     }
@@ -504,12 +565,11 @@ function giveSocialBonus(platform, e) {
     walletBalance += 1000;
     localStorage.setItem("walletBalance", walletBalance.toString());
     localStorage.setItem(bonusKey, "1");
+    addHistory('Bonus', 'IND.COIN', '+1000', `Social bonus (${platform})`);
     updateMiningDisplay();
     alert(`100 IND.COIN bonus for following on ${platform.charAt(0).toUpperCase() + platform.slice(1)}!`);
   }
 }
-
-// Exchange system
 function toggleExchangeMenu() {
   const exchangeOptions = document.getElementById("exchangeOptions");
   exchangeOptions.style.display = exchangeOptions.style.display === "none" ? "flex" : "none";
@@ -527,14 +587,12 @@ function createExchangeModal(type) {
   modal.style.alignItems = "center";
   modal.style.justifyContent = "center";
   modal.style.zIndex = "9999";
-
   let labelFrom = type === "usdt2ind" ? "USDT" : "IND.COIN";
   let labelTo = type === "usdt2ind" ? "IND.COIN" : "USDT";
   let balance = type === "usdt2ind" ? usdtBalance : walletBalance;
   let rateStr = type === "usdt2ind"
     ? `1 USDT = ${EXCHANGE_RATE} IND.COIN`
     : `1 IND.COIN = ${(1/EXCHANGE_RATE).toFixed(8)} USDT`;
-
   modal.innerHTML = `
     <div style="background:#fffbe6;padding:28px 22px 22px 22px;min-width:320px;border-radius:14px;box-shadow:0 4px 24px #FFD70033;max-width:94vw;">
       <h3 style="margin-top:0;color:#B07B00;font-size:1.2em;">Convert ${labelFrom} → ${labelTo}</h3>
@@ -554,14 +612,10 @@ function createExchangeModal(type) {
     </div>
   `;
   document.body.appendChild(modal);
-
-  // MAX button logic
   document.getElementById("maxBtn").onclick = function() {
     document.getElementById("exchangeInput").value = balance;
     document.getElementById("exchangeInput").dispatchEvent(new Event('input'));
   };
-
-  // Live calculation
   document.getElementById("exchangeInput").oninput = function() {
     let val = parseFloat(this.value) || 0;
     let result;
@@ -573,7 +627,6 @@ function createExchangeModal(type) {
       document.getElementById("exchangeResult").innerText = `${val} IND.COIN → ${result.toFixed(8)} USDT`;
     }
   };
-  // Confirm conversion
   document.getElementById("confirmExchangeBtn").onclick = function() {
     let amount = parseFloat(document.getElementById("exchangeInput").value) || 0;
     if(amount <= 0) { alert("Enter a valid amount."); return; }
@@ -582,6 +635,8 @@ function createExchangeModal(type) {
       let indAmount = amount * EXCHANGE_RATE;
       usdtBalance -= amount;
       walletBalance += indAmount;
+      addHistory('Exchange', 'USDT', `-${amount}`, 'USDT to IND.COIN');
+      addHistory('Exchange', 'IND.COIN', `+${indAmount}`, 'USDT to IND.COIN');
       localStorage.setItem("usdtBalance", usdtBalance.toString());
       localStorage.setItem("walletBalance", walletBalance.toString());
       updateMiningDisplay();
@@ -591,6 +646,8 @@ function createExchangeModal(type) {
       let usdtAmount = amount / EXCHANGE_RATE;
       walletBalance -= amount;
       usdtBalance += usdtAmount;
+      addHistory('Exchange', 'IND.COIN', `-${amount}`, 'IND.COIN to USDT');
+      addHistory('Exchange', 'USDT', `+${usdtAmount.toFixed(8)}`, 'IND.COIN to USDT');
       localStorage.setItem("usdtBalance", usdtBalance.toString());
       localStorage.setItem("walletBalance", walletBalance.toString());
       updateMiningDisplay();
@@ -599,18 +656,10 @@ function createExchangeModal(type) {
     document.body.removeChild(document.getElementById('exchangeModal'));
   };
 }
-
-// Activate exchange buttons
 document.addEventListener("DOMContentLoaded", function() {
-  document.getElementById("usdt2indBtn").onclick = function() {
-    createExchangeModal("usdt2ind");
-  };
-  document.getElementById("ind2usdtBtn").onclick = function() {
-    createExchangeModal("ind2usdt");
-  };
+  document.getElementById("usdt2indBtn").onclick = function() {createExchangeModal("usdt2ind");};
+  document.getElementById("ind2usdtBtn").onclick = function() {createExchangeModal("ind2usdt");};
 });
-
-// Profile Save/Load logic
 function loadProfileForm() {
   const profileForm = document.getElementById('profileForm');
   const detailsBar = document.getElementById('profileDetails');
@@ -640,7 +689,77 @@ document.getElementById('profileForm').onsubmit = function(e) {
   updateProfileDisplay();
   return false;
 };
-
+function openAIChat() {
+  document.getElementById('aiChatModal').style.display = 'flex';
+  document.getElementById('aiChatInput').focus();
+  if(document.getElementById('aiChatMessages').innerHTML === '') {
+    aiAddMsg('ai', 'Hi! 🤖 IND.COIN AI Support at your service. How can I help you regarding IND.COIN?');
+  }
+}
+function closeAIChat() {
+  document.getElementById('aiChatModal').style.display = 'none';
+}
+function aiAddMsg(who, msg) {
+  const el = document.getElementById('aiChatMessages');
+  const bubble = `<div style="margin-bottom:7px;text-align:${who==='user'?'right':'left'};">
+    <span style="display:inline-block;padding:7px 13px;border-radius:12px;background:${who==='user'?'#FFD700':'#fff'};color:${who==='user'?'#fffbe6':'#7b5600'};max-width:80%;word-break:break-word;">
+      ${msg}
+    </span>
+  </div>`;
+  el.innerHTML += bubble;
+  el.scrollTop = el.scrollHeight;
+}
+document.getElementById('aiChatForm').onsubmit = function(e) {
+  e.preventDefault();
+  const input = document.getElementById('aiChatInput');
+  const q = input.value.trim();
+  if(!q) return;
+  aiAddMsg('user', q);
+  input.value = '';
+  setTimeout(() => {
+    aiAddMsg('ai', aiChatBotReply(q));
+  }, 500);
+};
+function aiChatBotReply(q) {
+  const txt = q.toLowerCase();
+  if(txt.includes('coin') || txt.includes('ind')) return "IND.COIN is a digital mining coin for everyone! Earn coins, invite friends, and stake for more rewards.";
+  if(txt.includes('withdraw')) return "Withdrawal feature is coming soon! Stay tuned for updates.";
+  if(txt.includes('stake')) return "You can stake your IND.COIN and earn more rewards. Staking feature will be available soon.";
+  if(txt.includes('bonus')) return "You get bonus IND.COIN for inviting friends and following our social channels!";
+  if(txt.includes('invite')) return "Invite friends using your ID and earn level income bonuses!";
+  if(txt.includes('usdt')) return "You can exchange IND.COIN to USDT – just use the Exchange tab!";
+  if(txt.includes('profile')) return "You can set your profile details in the MY Profile section.";
+  return "Thank you for contacting IND.COIN support. For more info, ask about mining, staking, bonus, withdrawal, or assets!";
+}
+const LANGUAGES = [
+  {name:'English', flag:'us'}, {name:'Hindi', flag:'in'}, {name:'Urdu', flag:'pk'},
+  {name:'Gujarati', flag:'in'}, {name:'Marathi', flag:'in'}, {name:'Punjabi', flag:'in'},
+  {name:'Bengali', flag:'bd'}, {name:'Tamil', flag:'in'}, {name:'Telugu', flag:'in'},
+  {name:'Kannada', flag:'in'}, {name:'Malayalam', flag:'in'}, {name:'Spanish', flag:'es'},
+  {name:'Arabic', flag:'sa'}, {name:'French', flag:'fr'}, {name:'Russian', flag:'ru'},
+  {name:'Chinese', flag:'cn'}, {name:'Japanese', flag:'jp'}, {name:'German', flag:'de'},
+  {name:'Italian', flag:'it'}, {name:'Turkish', flag:'tr'}, {name:'Korean', flag:'kr'},
+  {name:'Indonesian', flag:'id'}, {name:'Thai', flag:'th'}, {name:'Portuguese', flag:'pt'}
+];
+function openLanguageModal() {
+  document.getElementById('languageModal').style.display = 'flex';
+  let html = '';
+  LANGUAGES.forEach(lang => {
+    html += `
+      <button onclick="selectLanguage('${lang.name}', '${lang.flag}')" style="display:flex;align-items:center;gap:8px;width:100%;padding:9px 0 9px 4px;margin:0 0 3px 0;background:#fff;border-radius:7px;border:1px solid #FFD700;color:#7b5600;font-size:15px;cursor:pointer;">
+        <img src="https://flagcdn.com/${lang.flag}.svg" width="22" style="border-radius:3px;"> ${lang.name}
+      </button>
+    `;
+  });
+  document.getElementById('langList').innerHTML = html;
+}
+function closeLanguageModal() {
+  document.getElementById('languageModal').style.display = 'none';
+}
+function selectLanguage(name, flag) {
+  document.getElementById('selectedLang').innerHTML = `<img src="https://flagcdn.com/${flag}.svg" width="16" style="vertical-align:middle;"/> ${name}`;
+  closeLanguageModal();
+}
 </script>
 </body>
 </html>
